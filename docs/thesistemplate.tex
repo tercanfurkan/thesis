@@ -1,0 +1,370 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                %%
+%% An example for writting your thesis using LaTeX                %%
+%% Original version by Luis Costa,  changes by Perttu Puska       %%
+%% Support for Swedish added 15092014                             %%
+%%                                                                %%
+%% This example consists of the files                             %%
+%%         thesistemplate.tex (versio 2.0)                        %%
+%%         opinnaytepohja.tex (versio 2.0) (for text in Finnish)  %%
+%%         aaltothesis.cls (versio 2.0)                           %%
+%%         kuva1.eps                                              %%
+%%         kuva2.eps                                              %%
+%%         kuva1.pdf                                              %%
+%%         kuva2.pdf                                              %%
+%%                                                                %%
+%%                                                                %%
+%% Typeset either with                                            %%
+%% latex:                                                         %%
+%%             $ latex opinnaytepohja                             %%
+%%             $ latex opinnaytepohja                             %%
+%%                                                                %%
+%%   Result is the file opinnayte.dvi, which                      %%
+%%   is converted to ps format as follows:                        %%                         %%
+%%                                                                %%
+%%             $ dvips opinnaytepohja -o                          %%
+%%                                                                %%
+%%   and then to pdf as follows:                                  %%
+%%                                                                %%
+%%             $ ps2pdf opinnaytepohja.ps                         %%
+%%                                                                %%
+%% Or                                                             %%
+%% pdflatex:                                                      %%
+%%             $ pdflatex opinnaytepohja                          %%
+%%             $ pdflatex opinnaytepohja                          %%
+%%                                                                %%
+%%   Result is the file opinnaytepohja.pdf                        %%
+%%                                                                %%
+%% Explanatory comments in this example begin with                %%
+%% the characters %%, and changes that the user can make          %%
+%% with the character %                                           %%
+%%                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Uncomment one of these, if you write in English:
+%% the 1st when using pdflatex, which directly typesets your document in
+%% pdf (use jpg or pdf figures), or
+%% the 2nd when producing a ps file (use eps figures, don't use ps figures!).
+\documentclass[english,12pt,a4paper,pdftex,sci,utf8]{aaltothesis}
+%\documentclass[english,12pt,a4paper,dvips]{aaltothesis}
+
+%% To the \documentclass above
+%% specify your school: arts, biz, chem, elec, eng, sci
+%% specify the character encoding scheme used by your editor: utf8, latin1
+
+\usepackage{graphicx}
+
+\usepackage{enumitem}
+
+%% Use this if you write hard core mathematics, these are usually needed
+\usepackage{amsfonts,amssymb,amsbsy}
+
+%% Use the macros in this package to change how the hyperref package below 
+%% typesets its hypertext -- hyperlink colour, font, etc. See the package
+%% documentation. It also defines the \url macro, so use the package when 
+%% not using the hyperref package.
+
+%\usepackage{url}
+
+%% Use this if you want to get links and nice output. Works well with pdflatex.
+\usepackage{hyperref}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\hypersetup{pdfpagemode=UseNone, pdfstartview=FitH,
+  colorlinks=true,urlcolor=red,linkcolor=blue,citecolor=black,
+  pdftitle={Default Title, Modify},pdfauthor={Your Name},
+  pdfkeywords={Modify keywords}}
+
+
+%% All that is printed on paper starts here
+\begin{document}
+
+%% Change the school field to specify your school if the automatically 
+%% set name is wrong
+%%
+%% Korjaa vastaamaan korkeakouluasi, jos automaattisesti asetettu nimi on 
+%% virheellinen 
+% \university{aalto-yliopisto}
+% \university{aalto University}
+% \school{Sähkötekniikan korkeakoulu}
+% \school{School of Electrical Engineering}
+
+%% Only for B.Sc. thesis: Choose your degree programme. 
+\degreeprogram{Service Design and Engineering}
+%\degreeprogram{Elektroniikka ja sähkötekniikka}
+%%
+
+%% ONLY FOR M.Sc. AND LICENTIATE THESIS: Specify your department,
+%% professorship and professorship code. 
+\department{Department of Computer Science and Engineering}
+%\department{Radiotieteen ja -tekniikan laitos}
+
+%\professorship{Circuit theory}
+%\professorship{Piiriteoria}
+%\code{S-55}
+%%
+
+%% Valitse yksi näistä kolmesta
+%%
+%% Choose one of these:
+%\univdegree{BSc}
+\univdegree{MSc}
+%\univdegree{Lic}
+
+%% Oma nimi
+%%
+%% Should be self explanatory...
+\author{Ömer Furkan Tercan}
+
+%% Your thesis title comes here and again before a possible abstract in
+%% Finnish or Swedish . If the title is very long and latex does an
+%% unsatisfactory job of breaking the lines, you will have to force a
+%% linebreak with the \\ control character. 
+%% Do not hyphenate titles.
+
+%\thesistitle{Enabling Architectural Activities in Lean Development Flow for Enhanced Software Quality}
+%\thesistitle{Addressing Architectural Defects in Agile Software Development - A Case Study in a Lean Startup}
+%\thesistitle{Enabling Proactive Architectural Activities in Agile Software Development - A Case Study in a Lean Startup}
+%\thesistitle{Enabling Architectural Measures in Agile Software Development for  - A Case Study in a Lean Startup}
+%\thesistitle{Enabling Architectural Activities in Agile Development for Assessing Software Quality - A Case Study in a Lean Startup}
+%\thesistitle{Addressing Architectural Aspects in Agile Development for Software Quality Assessment - A Case Study in a Lean Startup}
+%\thesistitle{Addressing Architectural Aspects for an Improved Quality Assessment in Lean Software Development - A Case Study in a Lean Startup}
+%\thesistitle{Incorporating Architectural Aspects in Lean Development Flow for Better Software Quality Assurance - A Case Study in a Lean Startup}
+%\thesistitle{Addressing Architectural Aspects for Enhanced Quality Assurance in Lean Software Development - A Case Study in a Lean Startup}
+%\thesistitle{Assessing Software Quality by Addressing Architectural Aspects in Lean Development - A Case Study in a Lean Startup}
+%\thesistitle{Assuring Software Quality in Lean Development by Addressing Architectural Aspects - A Case Study in a Lean Startup}
+%\thesistitle{Addressing Architectural Aspects to Assess Software Quality in Lean Development - A Case Study in a Lean Startup}
+\thesistitle{Software Refactoring Rationale in Agile Development: A Case Study in a Lean Startup}
+
+\place{Espoo}
+
+%% For B.Sc. thesis use the date when you present your thesis. 
+%% 
+%% Kandidaatintyön päivämäärä on sen esityspäivämäärä! 
+\date{31.03.2015}
+
+%% B.Sc. or M.Sc. thesis supervisor 
+%% Note the "\" after the comma. This forces the following space to be 
+%% a normal interword space, not the space that starts a new sentence. 
+%% This is done because the fullstop isn't the end of the sentence that
+%% should be followed by a slightly longer space but is to be followed
+%% by a regular space.
+%%
+%% Kandidaattiseminaarin vastuuopettaja tai diplomityön valvoja.
+%% Huomaa tittelissä "\" -merkki pisteen jälkeen, 
+%% ennen välilyöntiä ja seuraavaa merkkijonoa. 
+%% Näin tehdään, koska kyseessä ei ole lauseen loppu, jonka jälkeen tulee 
+%% hieman pidempi väli vaan halutaan tavallinen väli.
+\supervisor{Assoc. Prof. Casper Lassenius} %{Prof.\ Pirjo Professori}
+
+%% B.Sc. or M.Sc. thesis advisors(s). You can give upto two advisors in
+%% this template. Check with your supervisor how many official advisors
+%% you can have.
+%%
+%% Kandidaatintyön ohjaaja(t) tai diplomityön ohjaaja(t). Ohjaajia saa
+%% olla korkeintaan kaksi.
+%% 
+%\advisor{Prof.\ Pirjo Professori}
+%\advisor{D.Sc.\ (Tech.) Olli Ohjaaja}
+%\advisor{M.Sc. Advisor}
+
+%% Aalto logo: syntax:
+%% Aaltologo: syntaksi:
+%%
+%% \uselogo{aaltoRed|aaltoBlue|aaltoYellow|aaltoGray|aaltoGrayScale}{?|!|''}
+%%
+%% Logo language is set to be the same as the document language.
+%% Logon kieli on sama kuin dokumentin kieli
+%%
+\uselogo{aaltoRed}{''}
+
+%% Create the coverpage
+%%
+%% Tehdään kansilehti
+\makecoverpage
+
+
+%% Note that when writting your master's thesis in English, place
+%% the English abstract first followed by the possible Finnish abstract
+
+%% English abstract.
+%% All the information required in the abstract (your name, thesis title, etc.)
+%% is used as specified above.
+%% Specify keywords
+%%
+%% Kaikki tiivistelmässä tarvittava tieto (nimesi, työnnimi, jne.) käytetään
+%% niin kuin se on yllä määritelty.
+%% Avainsanat
+%%
+\keywords{refactoring, refactoring rational, refactoring drivers, code smells, anti-patterns, software restructuring, agile, lean}
+%% Abstract text
+\begin{abstractpage}[english]
+What is refactoring? What is the goal of refactoring?
+
+-
+
+What is the role of software refactoring in agile development? In which situations it is applied? What does the literature say about how it should be applied? How does these to views match? What is the scope of this study?
+
+-
+
+How does this thesis conduct a study to answer the research questios? What is the research context in a sentence? What is the research methodology in summary?
+
+-
+
+What are the key findings? Limitations and future work?
+\end{abstractpage}
+
+%% Preface
+%\mysection{Preface}
+%\vspace{5cm}
+%Otaniemi, 31.03.2013
+
+%\vspace{5mm}
+%{\hfill Ömer Furkan Tercan \hspace{1cm}}
+
+\newpage
+
+
+%% Table of contents. 
+\thesistableofcontents
+
+
+%% Corrects the page numbering, there is no need to change these
+\cleardoublepage
+\storeinipagenumber
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+
+%% Text body begins. Note that since the text body
+%% is mostly in Finnish the majority of comments are
+%% also in Finnish after this point. There is no point in explaining
+%% Finnish-language specific thesis conventions in English. Someday 
+%% this text will possibly be translated to English.
+%%
+%% Leip\"ateksti alkaa
+\section{Introduction} \label{introduction}
+In this chapter section \ref{background} presents the background and motivation of this study. Following section \ref{questions} introduces the objective and research questions. Finally, section \ref{scope} summerizes the structure and the scope of the thesis. 
+\subsection{Background and motivation} \label{background}
+What is the importance of software engineering. Why and how critical is it for software development. What does the literature say about it's importance. If we scope it a bit down, what is the view of agile development to these questions?
+
+What is the tricky part when deciding on what and how much to refactor? Is this hard to define. Does it highly depend on the context? How credible is what the literature say about drivers on refactoring decisions. Is there a research gap to reveal empirical findings in order to contribute the scientific body of knowledge regarding refactoring rational?
+
+What would be the benefits once we know more about refactoring rational? What does the literature say about it's possible benefits? Take into account different viewpoints (customers, developers, etc.).
+
+Discuss the relevant literature. Have this topic been touched? What are the touching points? Which areas of the topic will be overlapped (and why) in this study? What would be the additional contribution? Why does this contribution makes sense?
+
+How do you claim to achieve this contribution? Summarize the research process. Why does it make sense to conduct the study in such a research context? 
+
+Motivated by the findings in earlier studies, this thesis investigates the refactoring rational in a lean startup ICT company. Attention has been paid to understand the drivers behind refactoring decisions in the company's agile development process. The results of the case study is analyzed, discussed and the most significant findings are compared with the scientific knowledge regarding software refactoring rational. We will also discuss the issues which needs more thorough investigation and research in the future.
+
+This study also contains a literature review chapter. In chapter \ref{literature}, we will discuss software refactoring and refactoring rational as it is described by the literature. Then, we will explore refactoring drivers defined by the scientific body of knowledge, including anti-patterns and code smells.
+
+\subsection{Scope of the thesis} \label{scope}
+
+\subsection{Objective and research questions} \label{questions}
+According to the motivation stated in section \ref{background}, there is need to investigate and reveal the correlation between how literature have conceptualized software refactoring rational and how it is actually applied by software development organizations. Accordingly, an empirical study can be conducted investigating refactoring decisions in a case company. The empirical results can then be further analyzed and compared with the scientific body of knowledge regarding software refactoring rational. 
+
+This motivation leads to the main study objective:
+
+\textbf{Objective:} To understand the perception of the scientific knowledge versus agile software developers regarding software refactoring rationale
+
+The following research questions were derived based on the main objective:
+
+\begin{enumerate}[label=\textbf{RQ\arabic*}]
+\item What does literature say about refactoring and when it is needed?
+\item What are the drivers for software refactoring decisions in agile development?
+\item What is the correlation between the two?
+\end{enumerate}
+
+\subsection{Structure of the thesis} \label{structure}
+%% In a thesis, every section starts a new page, hence \clearpage
+\clearpage
+
+\section{Research setting} \label{research setting}
+
+\subsection{Context} \label{context}
+The context in which this study is executed is a lean start-up ICT company based in Helsinki, Finland.
+\subsubsection*{Software under study} \label{software}
+\subsubsection*{Development process} \label{process}
+The organization is a lean startup, which uses a lean development flow employing most of the agile development practices, including stand-up meetings, retrospectives, technical reviews, task reviews, pair reviews, one peace flow, pair programming and YAGNI. 
+\subsubsection*{Developers} \label{developers}
+All developers of the organization participated in the empirical study. During this period, 6 developers reported their refactoring tasks in the source code revision control system.
+
+<<A demographic of the developers presenting their work experience level>>
+
+\subsection{Methodology} \label{methodology}
+The first three steps (RQ1, RQ2, RQ3) towards answering the main research question not only help identify state of the art SQBA principals used in agile and lean development, but also present the role of architecture in these principals. Once the role of architecture is positioned within context, we investigate the role of architecture in terms of SQBA in a broader sense to form a fountain of architectural activities that can be incorporated in lean development flow (RQ4). Finally on this basis, we conduct an action research in a real world lean software development environment, investigating how architectural activities can be handled together with development activities. Additionally, we evaluate the benefit of allowing architectural activities to take place in lean development flow in terms of SQBA, and whether this reveals a trade-off between enhanced software quality versus architecture related time and resource waste. All together we seek an answer to the last (RQ5) research question. 
+
+Finding an answer to RQ1 to RQ4 requires a literature review. This research was conducted using the following search queries:
+\begin{enumerate}[label=\textbf{Q1\arabic*}]
+\item lean software agile OR process OR architecture OR design OR quality "case study" (page 4 - 41300 results)
+\item "lean development" software agile OR process OR architecture OR design OR quality "case study"
+\end{enumerate}
+
+Finding an answer to RQ5 through a real world investigation overlaps with Yin's (2003) definition of a case study --- an empirical method aimed at investigating contemporary phenomena in their context. However, while case study includes observational investigation, action research also involves process improvement (Runeson and Höst 2008). Likewise, this study aims to improve the current lean development flow carried out at the case company. 
+
+\subsubsection{Data collection} \label{data collection}
+Data was collected in two phases. The purpose of the first phase was to collect problems that development team members were facing in the existing lean development process. The second data collection phase was conducted following the intervention introduced to the lean development team. This phase aims to observe the change in the lean development process and to record it's implications.
+
+The case company uses agile principles and conducts a lean software development flow. Their development process consists of a one peace flow, starting with story planning followed by individual task development, task review, story technical review, story functional review, story releasing and story deployment. The development team also takes advantage of continuous integration, pair programming, intensive face-to-face communication and regular reflection sessions.
+
+Data collection was performed during both development meetings and company general meetings. Development team meetings include, story planning meetings, daily stand-up meetings, story review meetings, bi-weekly retrospective meetings. Company general meetings consist of, release planning meetings and weekly update meetings. 
+
+The data was collected using observations, informal conversations, and semi-formal interviews. Semi-formal interviews were conducted with development team members as part of both first and second data collection phases. Observations and informal conversations were audio recorded during development and company general meetings as part of only data collection phase two.
+
+\subsubsection{Data analysis} \label{data analysis}
+
+\clearpage
+
+\section{Literature study} \label{literature}
+\subsection{Software refactoring}
+\subsection{Refactoring rationale}
+
+%\clearpage
+
+\section{Case study} \label{case study}
+
+%\clearpage
+
+\section{Discussions} \label{discussions}
+\section{Conclusions} \label{conclusions}
+\subsection{Threads to Validity} \label{validity}
+\subsection{Future Work} \label{future}
+
+\clearpage
+%% The \phantomsection command is nessesary for hyperref to jump to the 
+%% correct page, in other words it puts a hyper marker on the page.
+
+\phantomsection
+\addcontentsline{toc}{section}{\refname}
+%\addcontentsline{toc}{section}{References}
+\begin{thebibliography}{99}
+
+%\bibitem{Kauranen} Kauranen,\ I., Mustakallio,\ M. ja Palmgren,\ V.
+%  \textit{Tutkimusraportin kirjoittamisen opas opinn\"aytety\"on
+%    tekij\"oille.}  Espoo, Teknillinen korkeakoulu, 2006.
+
+%\bibitem{Itkonen} Itkonen,\ M. \textit{Typografian k\"asikirja.} 3.\
+%  painos.  Helsinki, RPS-yhti\"ot, 2007.
+
+%\bibitem{Koblitz} Koblitz,\ N. \textit{A Course in Number Theory and
+%    Cryptography. Graduate Texts in Mathematics 114.}  2.\ painos. New
+%  York, Springer, 1994.
+  
+%\bibitem{bcs} Bardeen,\ J., Cooper,\ L.\ N. ja Schrieffer,\ J.\ R.
+%  Theory of Superconductivity. \textit{Physical Review,} 1957, vol.\
+%  108, nro~5, s.\ 1175--1204.
+
+%\bibitem{viittaaminen} Kilpel\"ainen,\ P. WWW-l\"ahteisiin viittaaminen
+%  tutkielmatekstiss\"a. Verkkodokumentti. P\"aivitetty 26.11.2001.
+%  Viitattu 19.1.2007. Saatavissa:
+%  \url{http://www.cs.uku.fi/~kilpelai/wwwlahteet.html.}
+
+\end{thebibliography}
+
+\end{document}
