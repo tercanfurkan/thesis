@@ -200,14 +200,14 @@
 %% niin kuin se on yllä määritelty.
 %% Avainsanat
 %%
-\keywords{refactoring, refactoring rational, refactoring drivers, code smells, anti-patterns, software restructuring, agile, lean}
+\keywords{refactoring, code smells, anti-patterns, agile, lean}
 %% Abstract text
 \begin{abstractpage}[english]
 What is refactoring? What is the goal of refactoring?
 
 -
 
-What is the role of software refactoring in agile development? In which situations it is applied? What does the literature say about how it should be applied? How does these to views match? What is the scope of this study?
+What is the role of software refactoring in agile development? What is the developer's perception of refactoring? What does the literature say about refactoring rationale? How does these to views match? What is the scope of this study?
 
 -
 
@@ -248,37 +248,43 @@ What are the key findings? Limitations and future work?
 %%
 %% Leip\"ateksti alkaa
 \section{Introduction} \label{introduction}
-In this chapter section \ref{background} presents the background and motivation of this study. Following section \ref{questions} introduces the objective and research questions. Finally, section \ref{scope} summerizes the structure and the scope of the thesis. 
+In this chapter section \ref{background} presents the background and motivation of this study. Following section \ref{scope} presents the scope of the thesis. Section \ref{questions} introduces the objective and research questions. Finally, section \ref{structure} summarizes the structure of this document. 
 \subsection{Background and motivation} \label{background}
-What is the importance of software engineering. Why and how critical is it for software development. What does the literature say about it's importance. If we scope it a bit down, what is the view of agile development to these questions?
+What is refactoring? Why and how critical is it for software development. What does the literature say about it's importance. If we scope it a bit down, what is the view of agile development to these questions?
 
-What is the tricky part when deciding on what and how much to refactor? Is this hard to define. Does it highly depend on the context? How credible is what the literature say about drivers on refactoring decisions. Is there a research gap to reveal empirical findings in order to contribute the scientific body of knowledge regarding refactoring rational?
+What is the tricky part when deciding on what and how much to refactor? Is this hard to define. Does it highly depend on the context? How credible is what the literature say about drivers on refactoring decisions. Is there a research gap to reveal empirical findings in order to contribute to the scientific knowledge regarding refactoring rationale?
 
-What would be the benefits once we know more about refactoring rational? What does the literature say about it's possible benefits? Take into account different viewpoints (customers, developers, etc.).
+What would be the benefits, once we know more about refactoring rationale? What does the literature say about it's possible benefits? Take into account different viewpoints (customers, developers, etc.).
 
-Discuss the relevant literature. Have this topic been touched? What are the touching points? Which areas of the topic will be overlapped (and why) in this study? What would be the additional contribution? Why does this contribution makes sense?
+Discuss the relevant literature. Have this specific topic been investigated? What are the touching points? Which areas of the topic will be overlapped (and why) in this study? What would be the additional contribution? Why does this contribution make sense?
 
 How do you claim to achieve this contribution? Summarize the research process. Why does it make sense to conduct the study in such a research context? 
 
-Motivated by the findings in earlier studies, this thesis investigates the refactoring rational in a lean startup ICT company. Attention has been paid to understand the drivers behind refactoring decisions in the company's agile development process. The results of the case study is analyzed, discussed and the most significant findings are compared with the scientific knowledge regarding software refactoring rational. We will also discuss the issues which needs more thorough investigation and research in the future.
+Motivated by the findings in earlier studies, this thesis investigates the refactoring rationale in a lean startup ICT company. Attention has been paid to understand the drivers behind refactoring decisions in the company's agile development process. The results of the case study is analyzed, discussed and the most significant findings are compared with the scientific knowledge regarding software refactoring rationale. We will also discuss the issues which needs more thorough investigation and research in the future.
 
-This study also contains a literature review chapter. In chapter \ref{literature}, we will discuss software refactoring and refactoring rational as it is described by the literature. Then, we will explore refactoring drivers defined by the scientific body of knowledge, including anti-patterns and code smells.
+This study also contains a literature review chapter. In chapter \ref{literature}, we will discuss software refactoring and refactoring rationale as it is described in the literature. Then, we will explore refactoring drivers defined by the scientific knowledge, including anti-patterns and code smells.
 
 \subsection{Scope of the thesis} \label{scope}
 
 \subsection{Objective and research questions} \label{questions}
-According to the motivation stated in section \ref{background}, there is need to investigate and reveal the correlation between how literature have conceptualized software refactoring rational and how it is actually applied by software development organizations. Accordingly, an empirical study can be conducted investigating refactoring decisions in a case company. The empirical results can then be further analyzed and compared with the scientific body of knowledge regarding software refactoring rational. 
+According to the motivation stated in section \ref{background}, there is need to investigate and reveal the correlation between how literature have conceptualized software refactoring rationale and how it is actually percieved by developers. Accordingly, an empirical study can be conducted investigating refactoring decisions in a case company. The empirical results can then be further analyzed and compared with the scientific knowledge regarding software refactoring rationale. 
 
 This motivation leads to the main study objective:
 
-\textbf{Objective:} To understand the perception of the scientific knowledge versus agile software developers regarding software refactoring rationale
+\textbf{Objective:} To study refactoring rationale, particularly it's perception between the scientific knowledge versus agile software developers, to identify neglected threats to software evolution.
 
 The following research questions were derived based on the main objective:
 
 \begin{enumerate}[label=\textbf{RQ\arabic*}]
 \item What does literature say about refactoring and when it is needed?
-\item What are the drivers for software refactoring decisions in agile development?
-\item What is the correlation between the two?
+
+This research question tries to investigate relevant literature to form a basis on refactoring, in particular to present a refactoring rationale taxonomy based on related work.
+\item How does developers perceive refactoring rationale?
+
+This research question is of explorative nature and it tries to find empirical evidence on refactoring rational, taking into account the human factor. 
+\item What does the correlation of the two reveal in terms of threats to software evolution?
+
+This research question aims to discuss how well the developer's perception fits to the presented taxonomy. Based on this discussion, it aims to identify neglected threats to software evolution.
 \end{enumerate}
 
 \subsection{Structure of the thesis} \label{structure}
@@ -291,11 +297,11 @@ The following research questions were derived based on the main objective:
 The context in which this study is executed is a lean start-up ICT company based in Helsinki, Finland.
 \subsubsection*{Software under study} \label{software}
 \subsubsection*{Development process} \label{process}
-The organization is a lean startup, which uses a lean development flow employing most of the agile development practices, including stand-up meetings, retrospectives, technical reviews, task reviews, pair reviews, one peace flow, pair programming and YAGNI. 
+The organization is a lean startup, having a lean development flow employing most of the agile development practices. Practices worth mentioning includes; continuous integration, continuous improvement (process & software), frequent delivery, efficient and face-to-face communication, peer reviews, one peace flow, pair programming, testing as an integral part of development, and collective code ownership.  
 \subsubsection*{Developers} \label{developers}
 All developers of the organization participated in the empirical study. During this period, 6 developers reported their refactoring tasks in the source code revision control system.
 
-<<A demographic of the developers presenting their work experience level>>
+<<A figure presenting developers and their work experience levels>>
 
 \subsection{Methodology} \label{methodology}
 The first three steps (RQ1, RQ2, RQ3) towards answering the main research question not only help identify state of the art SQBA principals used in agile and lean development, but also present the role of architecture in these principals. Once the role of architecture is positioned within context, we investigate the role of architecture in terms of SQBA in a broader sense to form a fountain of architectural activities that can be incorporated in lean development flow (RQ4). Finally on this basis, we conduct an action research in a real world lean software development environment, investigating how architectural activities can be handled together with development activities. Additionally, we evaluate the benefit of allowing architectural activities to take place in lean development flow in terms of SQBA, and whether this reveals a trade-off between enhanced software quality versus architecture related time and resource waste. All together we seek an answer to the last (RQ5) research question. 
