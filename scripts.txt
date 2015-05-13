@@ -1,0 +1,2 @@
+^.*\S+.*$a
+/Users/furkan/workplace/tellbean/outer-reef-server, *.php,*.phtml,*.js,*.json,*.py,*.html,*.less,*.sh,*.conf, -*/src/facebook-client/*, -*/src/web-client/*

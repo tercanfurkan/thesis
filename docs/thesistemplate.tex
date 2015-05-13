@@ -296,8 +296,66 @@ This research question aims to discuss how well the developer's perception fits 
 \subsection{Context} \label{context}
 The context in which this study is executed is a lean start-up ICT company based in Helsinki, Finland.
 \subsubsection*{Software under study} \label{software}
+Software under study consists of three components:
+
+\begin{enumerate}[label=\textbf{C\arabic*}]
+\item A server component implemented using javascript, particularly using nodejs.
+
+\begin{tabular}{ |p{3cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
+ \hline
+ \multicolumn{5}{|c|}{LOC nodejs server component} \\
+ \hline
+ Language       &Files  &Blank  &Comment    &Code\\
+ \hline
+ Javascript     &36     &582    &131        &4059\\
+ JSON           &4      &1      &0          &251\\
+ PYTHON         &5      &72     &46         &213\\
+ HTML           &1      &0      &1          &43\\
+ Shell   &2      &21     &5          &39\\
+ \hline
+ Sum            &48     &676    &183        &4605\\
+ \hline
+\end{tabular}
+
+\item A client component implemented using java, particularly using android.
+
+\begin{tabular}{ |p{3cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
+ \hline
+ \multicolumn{5}{|c|}{LOC android client component} \\
+ \hline
+ Language       &Files  &Blank  &Comment    &Code\\
+ \hline
+ XML            &707    &2687   &4921       &25950\\
+ Java           &143    &2699   &5873       &15078\\
+ Shell          &2      &50     &21         &237\\
+ \hline
+ Sum            &852    &5436   &10815      &41265\\
+ \hline
+\end{tabular}
+\item A client component implemented using javascript, particularly using angularjs.
+
+\begin{tabular}{ |p{3cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
+ \hline
+ \multicolumn{5}{|c|}{LOC angularjs client component} \\
+ \hline
+ Language&Files&Blank&Comment&Code\\
+ \hline
+ Javascript   & 37    &542&   161&3631\\
+ Less&   15  & 275   &10 & 1359\\
+ HTML &24 & 58&  17&540\\
+ JSON    &2 & 0&  0 & 0\\
+ \hline
+ Sum&78&875&188&5606\\
+ \hline
+\end{tabular}
+\end{enumerate}
 \subsubsection*{Development process} \label{process}
-The organization is a lean startup, having a lean development flow employing most of the agile development practices. Practices worth mentioning includes; continuous integration, continuous improvement (process & software), frequent delivery, efficient and face-to-face communication, peer reviews, one peace flow, pair programming, testing as an integral part of development, and collective code ownership.  
+The organization is a lean startup, having a lean development flow employing most of the agile development practices. Practices worth mentioning includes; continuous integration and deployment, continuous improvement (process & software quality), efficient and face-to-face communication, peer reviews, one peace flow, pair programming, testing as an integral part of development, and collective code ownership.
+
+As it is a key principle of lean development, in ensuring continuous integration and deployment, continuous software quality improvement takes place routinely but critically within the organization. In particular, software refactoring serves as the main approach in this context.  
+
+The empirical study was introduced to the developers during continuous process improvement meetings, named as retrospectives. As part of the study, developers were requested to put addition attention in reporting their refactoring related tasks. Collective code ownership and peer reviews were routine practices at present. Therefore, developers were already used to report their daily tasks using the source-code revision control system (RCS). 
+
 \subsubsection*{Developers} \label{developers}
 All developers of the organization participated in the empirical study. During this period, 6 developers reported their refactoring tasks in the source code revision control system.
 
