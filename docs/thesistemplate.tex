@@ -71,6 +71,13 @@
 %% Use this if you want to get links and nice output. Works well with pdflatex.
 \usepackage{hyperref}
 
+\usepackage{subfig}
+\captionsetup[table]{aboveskip=12pt}
+\captionsetup[table]{belowskip=12pt}
+
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.5}
+
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
 
@@ -271,7 +278,7 @@ According to the motivation stated in section \ref{background}, there is need to
 
 This motivation leads to the main study objective:
 
-\textbf{Objective:} To study refactoring rationale, particularly it's perception between the scientific knowledge versus agile software developers, to identify neglected threats to software evolution.
+\textbf{Objective:} Study refactoring rationale, particularly how it is perceived by the scientific knowledge versus agile software developers, to identify neglected threats to software evolution.
 
 The following research questions were derived based on the main objective:
 
@@ -293,64 +300,78 @@ This research question aims to discuss how well the developer's perception fits 
 
 \section{Research setting} \label{research setting}
 
+The main objective of this study is to gain an understanding on refactoring rationale, in particular how it is described in the relevant literature versus how it is perceived by agile software developers. Thus, identify neglected threats to software evolution. 
+
+The objective is targeted in terms of a) studying relevant literature to form a basis on refactoring, particularly on refactoring rationale, b) finding empirical evidence on how refactoring rationale is percieved by developers, and c) discussing the inclusionary nature of the literature study and empirical findings. 
 \subsection{Context} \label{context}
 The context in which this study is executed is a lean start-up ICT company based in Helsinki, Finland.
 \subsubsection*{Software under study} \label{software}
 Software under study consists of three components:
 
 \begin{enumerate}[label=\textbf{C\arabic*}]
-\item A server component implemented using javascript, particularly using nodejs.
+\item The server component presented in Table \ref{table:serverLoc}, was implemented using javascript, particularly using nodejs.
 
-\begin{tabular}{ |p{3cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
- \hline
- \multicolumn{5}{|c|}{LOC nodejs server component} \\
- \hline
- Language       &Files  &Blank  &Comment    &Code\\
- \hline
- Javascript     &36     &582    &131        &4059\\
- JSON           &4      &1      &0          &251\\
- PYTHON         &5      &72     &46         &213\\
- HTML           &1      &0      &1          &43\\
- Shell   &2      &21     &5          &39\\
- \hline
- Sum            &48     &676    &183        &4605\\
- \hline
-\end{tabular}
-
-\item A client component implemented using java, particularly using android.
-
-\begin{tabular}{ |p{3cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
- \hline
- \multicolumn{5}{|c|}{LOC android client component} \\
- \hline
- Language       &Files  &Blank  &Comment    &Code\\
- \hline
- XML            &707    &2687   &4921       &25950\\
- Java           &143    &2699   &5873       &15078\\
- Shell          &2      &50     &21         &237\\
- \hline
- Sum            &852    &5436   &10815      &41265\\
- \hline
-\end{tabular}
-\item A client component implemented using javascript, particularly using angularjs.
-
-\begin{tabular}{ |p{3cm}||p{2cm}|p{2cm}|p{2cm}|p{2cm}|  }
- \hline
- \multicolumn{5}{|c|}{LOC angularjs client component} \\
- \hline
- Language&Files&Blank&Comment&Code\\
- \hline
- Javascript   & 37    &542&   161&3631\\
- Less&   15  & 275   &10 & 1359\\
- HTML &24 & 58&  17&540\\
- JSON    &2 & 0&  0 & 0\\
- \hline
- Sum&78&875&188&5606\\
- \hline
-\end{tabular}
+\item An android client component presented in Table \ref{table:androidLoc}, was implemented using java.
+    
+\item A web client component presented in Table \ref{table:webLoc}, was implemented using javascript, particularly using angularjs.
 \end{enumerate}
+
+\begin{table}[ht!]
+\centering
+\caption{Server component; number of files and LOC}
+\label{table:serverLoc}
+    \begin{tabular}{ |p{3cm} p{2cm} p{2cm} p{2cm} p{2cm}|  }
+     \hline
+     Language       &Files  &Blank  &Comment    &Code\\
+     \hline
+     \hline
+     Javascript     &36     &582    &131        &4059\\
+     Json           &4      &1      &0          &251\\
+     Python         &5      &72     &46         &213\\
+     Html           &1      &0      &1          &43\\
+     Shell          &2      &21     &5          &39\\
+     \hline\hline
+     Sum            &48     &676    &183        &4605\\
+     \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[ht!]
+\centering
+\caption{Android client component; number of files and LOC}
+\label{table:androidLoc}
+    \begin{tabular}{ |p{3cm} p{2cm} p{2cm} p{2cm} p{2cm}|  }
+     \hline
+     Language       &Files  &Blank  &Comment    &Code\\
+     \hline\hline
+     Xml            &707    &2687   &4921       &25950\\
+     Java           &143    &2699   &5873       &15078\\
+     Shell          &2      &50     &21         &237\\
+     \hline\hline
+     Sum            &852    &5436   &10815      &41265\\
+     \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[ht!]
+\centering
+\caption{Web client component; number of files and LOC}
+\label{table:webLoc}
+    \begin{tabular}{ |p{3cm} p{2cm} p{2cm} p{2cm} p{2cm}|  }
+     \hline
+     Language&Files&Blank&Comment&Code\\
+     \hline\hline
+     Javascript   & 37    &542&   161&3631\\
+     Less&   15  & 275   &10 & 1359\\
+     Html &24 & 58&  17&540\\
+     Json    &2 & 0&  0 & 0\\
+     \hline\hline
+     Sum&78&875&188&5606\\
+     \hline
+    \end{tabular}
+\end{table}
 \subsubsection*{Development process} \label{process}
-The organization is a lean startup, having a lean development flow employing most of the agile development practices. Practices worth mentioning includes; continuous integration and deployment, continuous improvement (process & software quality), efficient and face-to-face communication, peer reviews, one peace flow, pair programming, testing as an integral part of development, and collective code ownership.
+The organization is a lean startup, having a lean development flow employing most of the agile development practices. Practices worth mentioning includes; continuous integration and deployment, continuous improvement (process and software quality), efficient and face-to-face communication, peer reviews, one peace flow, pair programming, testing as an integral part of development, and collective code ownership.
 
 As it is a key principle of lean development, in ensuring continuous integration and deployment, continuous software quality improvement takes place routinely but critically within the organization. In particular, software refactoring serves as the main approach in this context.  
 
