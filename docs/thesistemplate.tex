@@ -344,7 +344,7 @@ RQ3 aims to study the correlation between RQ1 and RQ2. In addition, it conducts 
 \subsection{Case company} \label{caseCompany}
 The case study was conducted in a lean start-up ICT company based in Helsinki, Finland. The company is producing  telecommunication application services enabling video calling from multiple endpoints, including web browsers, smart TV's and mobile devices. 
 \subsubsection*{Software under study} \label{software}
-The service platform consists of a server backend and multiple client endpoints. However, the scope this study includes the server backend and two of the clients. Therefore, the three components scoped within this study consists of:
+The service platform consists of a server backend and multiple client endpoints. However, the scope of this study includes the server backend and two of the clients as these three components were actively developed within the data collection period. 
 
 \begin{enumerate}[label=\textbf{C\arabic*}]
 \item The server component presented in Table \ref{table:serverLoc}, was implemented using javascript, particularly using nodejs.
@@ -420,7 +420,7 @@ All developers of the organization participated in the empirical study. During t
 
 <<A figure presenting developers and their work experience levels>>
 
-\subsubsection{Data collection} \label{data collection}
+\subsection{Data collection} \label{data collection}
 Data was gathered from a single source. The single source of information was stored in the source-code \gls{RCS}. Developers have reported their refactoring related tasks via the source-code \gls{RCS}. Since collective code ownership and peer reviews where routine practices already, this extra duty required almost no extra effort from developers. 
 
 Prior to the empirical data collection kick-off, several group discussions were conducted to motivate developers to highlight their refactoring tasks in their notes and to place useful conventions for data collection and analysis. In order to ease the data collection and analysis process, a convention of labeling their reports was introduced to developers.
@@ -429,22 +429,43 @@ Developers were using git as the source-code \gls{RCS}. Therefore, developers hi
 
 In the cases were developer notes lacked sufficient amount of detail on the rational behind a refactoring decision, informal communication was used to resolve the ambiguity. Thanks to a) peer reviews with short feedback loops, b) efficient and face-to-face communication possibility, and c) technical reviews following short iterations, ambiguous developer notes were minimized. 
 
-\subsubsection{Data analysis} \label{data analysis}
+\subsection{Data analysis} \label{data analysis}
 How was the data filtered, cleaned, and categorized? What tools and analysis methods were used?
 
 \clearpage
 
 \section{Literature study} \label{literature}
+In addition to the references mentioned in the sub-sections, take a look at the following papers:
+\begin{itemize}
+\item Yamashita and Leon (2012)
+\item Yamashita and Leon (2013)
+\item Mäntylä (2009)
+\item Arcoverde et al. (2011)
+\item Mäntylä (2005)
+\item Mäntylä and Lassenius (2006)
+\end{itemize}
+
 \subsection{Software refactoring}
+Define refactoring referring mainly to Brown et al. (1998) and Fowler (2000). 
+
+Explain the importance and benefits of refactoring referring to at least Khomh et al. (2009), Cusumano et al. (1997), Cusumano et al. (1997),  
+
 \subsection{Refactoring rationale}
+Admit the basis of the presented taxonomy comes from Fowler (2000) but it is inspired (or taken from) Mäntylä et al. (2003). 
+
+Attempt to discuss and improve the taxonomy with at least Brown et al. (1998), Mäntylä and Lassenius (2006), Yamashita et al. (2013)
+\subsection{Software evolution}
+Refer to Lehman's (1980) software evolution study and to the described harmful side-effects of software evolution. The idea is to understand if there is neglected threats based on the difference between how literature describe refactoring rational and developer's view based on the empirical study.
 
 %\clearpage
 
 \section{Case study} \label{case study}
+Present findings based ond data collection and analysis.
 
 %\clearpage
 
 \section{Discussions} \label{discussions}
+Discuss correlation between RQ1 and RQ2. Correlation shall reveal findings on neglected threats to software evolution
 \section{Conclusions} \label{conclusions}
 \subsection{Threads to Validity} \label{validity}
 \subsection{Future Work} \label{future}
@@ -457,6 +478,41 @@ How was the data filtered, cleaned, and categorized? What tools and analysis met
 \addcontentsline{toc}{section}{\refname}
 %\addcontentsline{toc}{section}{References}
 \begin{thebibliography}{99}
+
+\begin{itemize}
+
+\item Arcoverde, Roberta, Alessandro Garcia, and Eduardo Figueiredo. "Understanding the longevity of code smells: preliminary results of an explanatory survey." Proceedings of the 4th Workshop on Refactoring Tools. ACM, 2011.
+
+\item Cusumano, Michael A., and Richard W. Selby. "Microsoft secrets." (1997).
+
+\item Cusumano, Michael, and David Yoffie. "Competing on Internet time." (1998).
+
+\item Fowler, Martin. "Refactoring: Improving the Design of Existing Code. 2000."
+
+\item Khomh, Foutse, Massimiliano Di Penta, and Y. Gueheneuc. "An exploratory study of the impact of code smells on software change-proneness." Reverse Engineering, 2009. WCRE'09. 16th Working Conference on. IEEE, 2009.
+
+\item Lehman, Meir M. "Programs, life cycles, and laws of software evolution." Proceedings of the IEEE 68.9 (1980): 1060-1076.
+
+\item McCormick, Hays W., Thomas J. Mowbray, and Raphael C. Malveau. "AntiPatterns: refactoring software, architectures, and projects in crisis." (1998).
+
+\item Mäntylä, Mika V., Jari Vanhanen, and Casper Lassenius. "A taxonomy and an initial empirical study of bad smells in code." Software Maintenance, 2003. ICSM 2003. Proceedings. International Conference on. IEEE, 2003.
+
+\item Mäntylä, Mika V. "An experiment on subjective evolvability evaluation of object-oriented software: explaining factors and interrater agreement." Empirical Software Engineering, 2005. 2005 International Symposium on. IEEE, 2005.
+
+\item Mäntylä, Mika V., and Casper Lassenius. "Drivers for software refactoring decisions." Proceedings of the 2006 ACM/IEEE international symposium on Empirical software engineering. ACM, 2006.
+
+\item Mäntylä, Mika V., and Casper Lassenius. "Subjective evaluation of software evolvability using code smells: An empirical study." Empirical Software Engineering 11.3 (2006): 395-431.
+
+\item Mäntylä, Mika. "Software evolvability-empirically discovered evolvability issues and human evaluations." (2009).
+
+\item Yamashita, Aiko, and Leon Moonen. "Do developers care about code smells? An exploratory survey." Reverse Engineering (WCRE), 2013 20th Working Conference on. IEEE, 2013.
+
+\item Yamashita, Aiko, and Leon Moonen. "Do code smells reflect important maintainability aspects?." Software Maintenance (ICSM), 2012 28th IEEE International Conference on. IEEE, 2012.
+
+\item Yamashita, Aiko, and Leon Moonen. "Exploring the impact of inter-smell relations on software maintainability: an empirical study." Proceedings of the 2013 International Conference on Software Engineering. IEEE Press, 2013.
+
+\item Yin, Robert K. "Applications of case study research (applied social research methods)." Series, 4th. Thousand Oaks: Sage Publications (2003).
+\end{itemize}
 
 %\bibitem{Kauranen} Kauranen,\ I., Mustakallio,\ M. ja Palmgren,\ V.
 %  \textit{Tutkimusraportin kirjoittamisen opas opinn\"aytety\"on
