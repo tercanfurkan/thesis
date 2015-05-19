@@ -1,26 +1,4 @@
-var fs = require('fs');
 var _  = require('lodash');
-
-// fs.readFile('../data/kahuna-commits.json', 'utf8', function (err, data) {
-
-//   console.log(JSON.stringify(data));
-//   return;
-
-// 	var obj = JSON.parse(JSON.stringify(data));	
-
-//   commitSummary = _.map(obj, function(commit) {	
-//   		return {
-//   			'sha'			: commit.sha,
-// 	  		'message'	: commit.commit.message,
-// 	  		'url'			: commit.html_url,
-// 	  		'author'	: commit.author.login
-// 	  	};
-  	
-//   });
-
-//   console.log(commitSummary);
-
-// });
 
 function summarizeCommits(data) {
   return _.map(data, function(commit) { 
