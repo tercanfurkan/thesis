@@ -1,27 +1,24 @@
 var GitHubApi = require("github");
 var Q       = require('q');
 
+var config	= require('./config.json');
+
 var client = new GitHubApi({
     // required
     version: "3.0.0"
 });
 
-var config = {
-	username	: '',
-	password	: '',
-	user 		: 'Tellybean'
-}
-
 
 var options = {
-	sha: 'develop',
-	per_page : 100
+	sha 			: config.git.sha,
+	user 			: config.git.user,
+	per_page 	: 100
 }
 
 client.authenticate({
     type: "basic",
-    username: config.username,
-    password: config.password
+    username: config.git.username,
+    password: config.git.password
 });
 
 function hasNextPage(meta) {
@@ -30,7 +27,6 @@ function hasNextPage(meta) {
 
 function getCommitComments(repo, since, page) {
 	var tmpOpt = options;
-	tmpOpt.user = config.user;
 	tmpOpt.repo = repo;
 	tmpOpt.page = page;
 
@@ -53,7 +49,6 @@ function getCommitComments(repo, since, page) {
 function getCommits(repo, since, page) {
 	var tmpOpt = options;
 	tmpOpt.since = since;
-	tmpOpt.user = config.user;
 	tmpOpt.repo = repo;
 	tmpOpt.page = page;
 
@@ -71,7 +66,7 @@ function getCommits(repo, since, page) {
 	return deferred.promise;
 };
 
-module.exports.getCommits 			= getCommits;
+module.exports.getCommits 				= getCommits;
 module.exports.getCommitComments 	= getCommitComments;
 
 
