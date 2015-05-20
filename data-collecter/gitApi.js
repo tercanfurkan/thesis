@@ -1,9 +1,9 @@
 var GitHubApi = require("github");
-var Q       = require('q');
+var Q       	= require('q');
 
-var config	= require('./config.json');
+var config		= require('./config.json');
 
-var client = new GitHubApi({
+var client	 	= new GitHubApi({
     // required
     version: "3.0.0"
 });
@@ -22,7 +22,7 @@ client.authenticate({
 });
 
 function hasNextPage(meta) {
-	return meta.link && link.indexOf('next') !== -1;
+	return meta.link && meta.link.indexOf('next') !== -1;
 }
 
 function getCommitComments(repo, since, page) {
@@ -33,8 +33,6 @@ function getCommitComments(repo, since, page) {
 	var deferred = Q.defer();
 	client.repos.getAllCommitComments(tmpOpt, function (err, res, res2) {
 		if (err) throw err;
-
-		console.log(res);
 
 		if (hasNextPage(res.meta)) 
 			getCommitComments(repo, since, page+1).then(function (innerRes){
