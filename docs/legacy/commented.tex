@@ -1,0 +1,357 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                %%
+%% An example for writting your thesis using LaTeX                %%
+%% Original version by Luis Costa,  changes by Perttu Puska       %%
+%% Support for Swedish added 15092014                             %%
+%%                                                                %%
+%% This example consists of the files                             %%
+%%         thesistemplate.tex (versio 2.0)                        %%
+%%         opinnaytepohja.tex (versio 2.0) (for text in Finnish)  %%
+%%         aaltothesis.cls (versio 2.0)                           %%
+%%         kuva1.eps                                              %%
+%%         kuva2.eps                                              %%
+%%         kuva1.pdf                                              %%
+%%         kuva2.pdf                                              %%
+%%                                                                %%
+%%                                                                %%
+%% Typeset either with                                            %%
+%% latex:                                                         %%
+%%             $ latex opinnaytepohja                             %%
+%%             $ latex opinnaytepohja                             %%
+%%                                                                %%
+%%   Result is the file opinnayte.dvi, which                      %%
+%%   is converted to ps format as follows:                        %%                         %%
+%%                                                                %%
+%%             $ dvips opinnaytepohja -o                          %%
+%%                                                                %%
+%%   and then to pdf as follows:                                  %%
+%%                                                                %%
+%%             $ ps2pdf opinnaytepohja.ps                         %%
+%%                                                                %%
+%% Or                                                             %%
+%% pdflatex:                                                      %%
+%%             $ pdflatex opinnaytepohja                          %%
+%%             $ pdflatex opinnaytepohja                          %%
+%%                                                                %%
+%%   Result is the file opinnaytepohja.pdf                        %%
+%%                                                                %%
+%% Explanatory comments in this example begin with                %%
+%% the characters %%, and changes that the user can make          %%
+%% with the character %                                           %%
+%%                                                                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Uncomment one of these, if you write in English:
+%% the 1st when using pdflatex, which directly typesets your document in
+%% pdf (use jpg or pdf figures), or
+%% the 2nd when producing a ps file (use eps figures, don't use ps figures!).
+\documentclass[english,12pt,a4paper,pdftex,sci,utf8]{aaltothesis}
+%\documentclass[english,12pt,a4paper,dvips]{aaltothesis}
+
+%% To the \documentclass above
+%% specify your school: arts, biz, chem, elec, eng, sci
+%% specify the character encoding scheme used by your editor: utf8, latin1
+
+\usepackage{graphicx}
+
+\usepackage{enumitem}
+
+%% Use this if you write hard core mathematics, these are usually needed
+\usepackage{amsfonts,amssymb,amsbsy}
+
+%% Use the macros in this package to change how the hyperref package below 
+%% typesets its hypertext -- hyperlink colour, font, etc. See the package
+%% documentation. It also defines the \url macro, so use the package when 
+%% not using the hyperref package.
+
+%\usepackage{url}
+
+%% Use this if you want to get links and nice output. Works well with pdflatex.
+\usepackage{hyperref}
+
+\usepackage{subfig}
+\captionsetup[table]{aboveskip=12pt}
+\captionsetup[table]{belowskip=2pt}
+
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.5}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+
+\hypersetup{pdfpagemode=UseNone, pdfstartview=FitH,
+  colorlinks=true,urlcolor=red,linkcolor=blue,citecolor=black,
+  pdftitle={Default Title, Modify},pdfauthor={Your Name},
+  pdfkeywords={Modify keywords}}
+  
+
+
+\usepackage[
+backend=biber,
+style=numeric-comp,
+sorting=ynt
+]{biblatex}
+\addbibresource{thesis.bib} %Imports bibliography file 
+
+\usepackage[utf8]{inputenc}
+\usepackage{glossaries}
+\makeglossaries
+\newglossaryentry{RCS}
+{
+    name=RCS,
+    description={Revision control system}
+}
+\newglossaryentry{LOC}
+{
+    name=LOC,
+    description={Lines of code}
+}
+
+
+%% All that is printed on paper starts here
+\begin{document}
+
+%% Change the school field to specify your school if the automatically 
+%% set name is wrong
+%%
+%% Korjaa vastaamaan korkeakouluasi, jos automaattisesti asetettu nimi on 
+%% virheellinen 
+% \university{aalto-yliopisto}
+% \university{aalto University}
+% \school{Sähkötekniikan korkeakoulu}
+% \school{School of Electrical Engineering}
+
+%% Only for B.Sc. thesis: Choose your degree programme. 
+\degreeprogram{Service Design and Engineering}
+%\degreeprogram{Elektroniikka ja sähkötekniikka}
+%%
+
+%% ONLY FOR M.Sc. AND LICENTIATE THESIS: Specify your department,
+%% professorship and professorship code. 
+\department{Department of Computer Science and Engineering}
+%\department{Radiotieteen ja -tekniikan laitos}
+
+%\professorship{Circuit theory}
+%\professorship{Piiriteoria}
+%\code{S-55}
+%%
+
+%% Valitse yksi näistä kolmesta
+%%
+%% Choose one of these:
+%\univdegree{BSc}
+\univdegree{MSc}
+%\univdegree{Lic}
+
+%% Oma nimi
+%%
+%% Should be self explanatory...
+\author{Ömer Furkan Tercan}
+
+%% Your thesis title comes here and again before a possible abstract in
+%% Finnish or Swedish . If the title is very long and latex does an
+%% unsatisfactory job of breaking the lines, you will have to force a
+%% linebreak with the \\ control character. 
+%% Do not hyphenate titles.
+
+\thesistitle{Software Refactoring Rationale in Agile Development: A Case Study in a Lean Startup}
+
+\place{Espoo}
+
+%% For B.Sc. thesis use the date when you present your thesis. 
+%% 
+%% Kandidaatintyön päivämäärä on sen esityspäivämäärä! 
+\date{31.03.2015}
+
+%% B.Sc. or M.Sc. thesis supervisor 
+%% Note the "\" after the comma. This forces the following space to be 
+%% a normal interword space, not the space that starts a new sentence. 
+%% This is done because the fullstop isn't the end of the sentence that
+%% should be followed by a slightly longer space but is to be followed
+%% by a regular space.
+%%
+%% Kandidaattiseminaarin vastuuopettaja tai diplomityön valvoja.
+%% Huomaa tittelissä "\" -merkki pisteen jälkeen, 
+%% ennen välilyöntiä ja seuraavaa merkkijonoa. 
+%% Näin tehdään, koska kyseessä ei ole lauseen loppu, jonka jälkeen tulee 
+%% hieman pidempi väli vaan halutaan tavallinen väli.
+\supervisor{Assoc. Prof. Casper Lassenius} %{Prof.\ Pirjo Professori}
+
+%% B.Sc. or M.Sc. thesis advisors(s). You can give upto two advisors in
+%% this template. Check with your supervisor how many official advisors
+%% you can have.
+%%
+%% Kandidaatintyön ohjaaja(t) tai diplomityön ohjaaja(t). Ohjaajia saa
+%% olla korkeintaan kaksi.
+%% 
+%\advisor{Prof.\ Pirjo Professori}
+%\advisor{D.Sc.\ (Tech.) Olli Ohjaaja}
+%\advisor{M.Sc. Advisor}
+
+%% Aalto logo: syntax:
+%% Aaltologo: syntaksi:
+%%
+%% \uselogo{aaltoRed|aaltoBlue|aaltoYellow|aaltoGray|aaltoGrayScale}{?|!|''}
+%%
+%% Logo language is set to be the same as the document language.
+%% Logon kieli on sama kuin dokumentin kieli
+%%
+\uselogo{aaltoRed}{''}
+
+%% Create the coverpage
+\makecoverpage
+
+
+%% Note that when writting your master's thesis in English, place
+%% the English abstract first followed by the possible Finnish abstract
+
+%% English abstract.
+%% All the information required in the abstract (your name, thesis title, etc.)
+%% is used as specified above.
+%% Specify keywords
+\keywords{refactoring, code smells, anti-patterns, agile, lean}
+%% Abstract text
+\begin{abstractpage}[english]
+What is refactoring? What is the goal of refactoring?
+
+What is the role of software refactoring in agile development? What is the developer's perception of refactoring? What does the literature say about refactoring rationale? How does these to views match? What is the scope of this study?
+
+How does this thesis conduct a study to answer the research questios? What is the research context in a sentence? What is the research methodology in summary?
+
+What are the key findings? Limitations and future work?
+\end{abstractpage}
+
+%% Preface
+%\mysection{Preface}
+%\vspace{5cm}
+%Otaniemi, 31.03.2013
+
+%\vspace{5mm}
+%{\hfill Ömer Furkan Tercan \hspace{1cm}}
+
+\newpage
+
+
+%% Table of contents. 
+\thesistableofcontents
+
+\newpage
+
+%%Glossary - abbreviations
+\printglossaries
+
+\newpage
+
+\listoftables
+
+
+%% Corrects the page numbering, there is no need to change these
+\cleardoublepage
+\storeinipagenumber
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+
+%% Text body begins. Note that since the text body
+%% is mostly in Finnish the majority of comments are
+%% also in Finnish after this point. There is no point in explaining
+%% Finnish-language specific thesis conventions in English. Someday 
+%% this text will possibly be translated to English.
+\section{Introduction} \label{introduction}
+\input{chapters/introduction}
+\clearpage
+
+\section{Literature study} \label{literature}
+\input{chapters/literature}
+\clearpage
+
+\section{Research setting} \label{research setting}
+\input{chapters/research}
+\clearpage
+
+\section{Case study findings} \label{case study}
+\input{chapters/findings}
+\clearpage
+
+\section{Discussions} \label{discussions}
+\input{chapters/discussions}
+\clearpage
+
+\section{Conclusions} \label{conclusions}
+\input{chapters/conclusions}
+\clearpage
+
+\section{Temporary references}
+\begin{itemize}
+\item Arcoverde, Roberta, Alessandro Garcia, and Eduardo Figueiredo. "Understanding the longevity of code smells: preliminary results of an explanatory survey." Proceedings of the 4th Workshop on Refactoring Tools. ACM, 2011.
+
+\item Cusumano, Michael A., and Richard W. Selby. "Microsoft secrets." (1997).
+
+\item Cusumano, Michael, and David Yoffie. "Competing on Internet time." (1998).
+
+\item Fowler, Martin. "Refactoring: Improving the Design of Existing Code. 2000."
+
+\item Khomh, Foutse, Massimiliano Di Penta, and Y. Gueheneuc. "An exploratory study of the impact of code smells on software change-proneness." Reverse Engineering, 2009. WCRE'09. 16th Working Conference on. IEEE, 2009.
+
+\item Lehman, Meir M. "Programs, life cycles, and laws of software evolution." Proceedings of the IEEE 68.9 (1980): 1060-1076.
+
+\item McCormick, Hays W., Thomas J. Mowbray, and Raphael C. Malveau. "AntiPatterns: refactoring software, architectures, and projects in crisis." (1998).
+
+\item Mäntylä, Mika V., Jari Vanhanen, and Casper Lassenius. "A taxonomy and an initial empirical study of bad smells in code." Software Maintenance, 2003. ICSM 2003. Proceedings. International Conference on. IEEE, 2003.
+
+\item Mäntylä, Mika V. "An experiment on subjective evolvability evaluation of object-oriented software: explaining factors and interrater agreement." Empirical Software Engineering, 2005. 2005 International Symposium on. IEEE, 2005.
+
+\item Mäntylä, Mika V., and Casper Lassenius. "Drivers for software refactoring decisions." Proceedings of the 2006 ACM/IEEE international symposium on Empirical software engineering. ACM, 2006.
+
+\item Mäntylä, Mika V., and Casper Lassenius. "Subjective evaluation of software evolvability using code smells: An empirical study." Empirical Software Engineering 11.3 (2006): 395-431.
+
+\item Mäntylä, Mika. "Software evolvability-empirically discovered evolvability issues and human evaluations." (2009).
+
+\item Yamashita, Aiko, and Leon Moonen. "Do developers care about code smells? An exploratory survey." Reverse Engineering (WCRE), 2013 20th Working Conference on. IEEE, 2013.
+
+\item Yamashita, Aiko, and Leon Moonen. "Do code smells reflect important maintainability aspects?." Software Maintenance (ICSM), 2012 28th IEEE International Conference on. IEEE, 2012.
+
+\item Yamashita, Aiko, and Leon Moonen. "Exploring the impact of inter-smell relations on software maintainability: an empirical study." Proceedings of the 2013 International Conference on Software Engineering. IEEE Press, 2013.
+
+\item Yin, Robert K. "Applications of case study research (applied social research methods)." Series, 4th. Thousand Oaks: Sage Publications (2003).
+\end{itemize}
+
+\clearpage
+
+\printbibliography[
+heading=bibintoc,
+title={References}
+]
+%% The \phantomsection command is nessesary for hyperref to jump to the 
+%% correct page, in other words it puts a hyper marker on the page.
+
+%\phantomsection
+%\addcontentsline{toc}{section}{\refname}
+%\addcontentsline{toc}{section}{References}
+%\begin{thebibliography}{99}
+
+%\bibitem{Kauranen} Kauranen,\ I., Mustakallio,\ M. ja Palmgren,\ V.
+%  \textit{Tutkimusraportin kirjoittamisen opas opinn\"aytety\"on
+%    tekij\"oille.}  Espoo, Teknillinen korkeakoulu, 2006.
+
+%\bibitem{Itkonen} Itkonen,\ M. \textit{Typografian k\"asikirja.} 3.\
+%  painos.  Helsinki, RPS-yhti\"ot, 2007.
+
+%\bibitem{Koblitz} Koblitz,\ N. \textit{A Course in Number Theory and
+%    Cryptography. Graduate Texts in Mathematics 114.}  2.\ painos. New
+%  York, Springer, 1994.
+  
+%\bibitem{bcs} Bardeen,\ J., Cooper,\ L.\ N. ja Schrieffer,\ J.\ R.
+%  Theory of Superconductivity. \textit{Physical Review,} 1957, vol.\
+%  108, nro~5, s.\ 1175--1204.
+
+%\bibitem{viittaaminen} Kilpel\"ainen,\ P. WWW-l\"ahteisiin viittaaminen
+%  tutkielmatekstiss\"a. Verkkodokumentti. P\"aivitetty 26.11.2001.
+%  Viitattu 19.1.2007. Saatavissa:
+%  \url{http://www.cs.uku.fi/~kilpelai/wwwlahteet.html.}
+
+%\end{thebibliography}
+
+\end{document}

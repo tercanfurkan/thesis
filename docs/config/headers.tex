@@ -1,0 +1,112 @@
+%% Change the school field to specify your school if the automatically 
+%% set name is wrong
+% \university{aalto-yliopisto}
+% \university{aalto University}
+% \school{Sähkötekniikan korkeakoulu}
+\school{School of Science}
+
+%% Only for B.Sc. thesis: Choose your degree programme. 
+\degreeprogram{Service Design and Engineering}
+%%
+
+%% ONLY FOR M.Sc. AND LICENTIATE THESIS: Specify your department,
+%% professorship and professorship code. 
+\department{Department of Computer Science and Engineering}
+
+%\professorship{Circuit theory}
+%\professorship{Piiriteoria}
+%\code{S-55}
+%%
+
+\univdegree{MSc}
+\author{Ömer Furkan Tercan}
+
+%% If the title is very long and latex does an
+%% unsatisfactory job of breaking the lines, you will have to force a
+%% linebreak with the \\ control character. 
+%% Do not hyphenate titles.
+
+\thesistitle{Software Refactoring Rationale in Agile Development: A Case Study in a Lean Startup}
+
+\place{Espoo}
+
+%% For B.Sc. thesis use the date when you present your thesis. 
+\date{08.06.2015}
+
+%% B.Sc. or M.Sc. thesis supervisor 
+%% Note the "\" after the comma. This forces the following space to be 
+%% a normal interword space, not the space that starts a new sentence. 
+%% This is done because the fullstop isn't the end of the sentence that
+%% should be followed by a slightly longer space but is to be followed
+%% by a regular space.
+
+\supervisor{Assoc. Prof.\ Casper Lassenius} %{Prof.\ Pirjo Professori}
+
+%% B.Sc. or M.Sc. thesis advisors(s). You can give upto two advisors in
+%% this template. Check with your supervisor how many official advisors
+%% you can have.
+%%
+%% Kandidaatintyön ohjaaja(t) tai diplomityön ohjaaja(t). Ohjaajia saa
+%% olla korkeintaan kaksi.
+%% 
+%\advisor{Prof.\ Pirjo Professori}
+%\advisor{D.Sc.\ (Tech.) Olli Ohjaaja}
+%\advisor{M.Sc. Advisor}
+
+%% Aalto logo: syntax:
+%% Aaltologo: syntaksi:
+%%
+%% \uselogo{aaltoRed|aaltoBlue|aaltoYellow|aaltoGray|aaltoGrayScale}{?|!|''}
+%%
+%% Logo language is set to be the same as the document language.
+%% Logon kieli on sama kuin dokumentin kieli
+%%
+\uselogo{aaltoRed}{''}
+
+%% Create the coverpage
+\makecoverpage
+
+%% All the information required in the abstract (your name, thesis title, etc.)
+%% is used as specified above.
+%% Specify keywords
+\keywords{refactoring, code smells, anti-patterns, agile, lean}
+%% Abstract text
+\begin{abstractpage}[english]
+What is refactoring? What is the goal of refactoring?
+
+What is the role of software refactoring in agile development? What is the developer's perception of refactoring? What does the literature say about refactoring rationale? How does these to views match? What is the scope of this study?
+
+How does this thesis conduct a study to answer the research questios? What is the research context in a sentence? What is the research methodology in summary?
+
+What are the key findings? Limitations and future work?
+\end{abstractpage}
+
+%% Preface
+%\mysection{Preface}
+%\vspace{5cm}
+%Otaniemi, 31.03.2013
+
+%\vspace{5mm}
+%{\hfill Ömer Furkan Tercan \hspace{1cm}}
+
+\newpage
+
+
+%% Table of contents. 
+\thesistableofcontents
+
+\newpage
+
+%%Glossary - abbreviations
+\printglossaries
+
+\newpage
+
+\listoftables
+
+
+%% Corrects the page numbering, there is no need to change these
+\cleardoublepage
+\storeinipagenumber
+\pagenumbering{arabic}
+\setcounter{page}{1}

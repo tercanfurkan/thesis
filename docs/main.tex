@@ -1,0 +1,81 @@
+%% Uncomment one of these, if you write in English:
+%% the 1st when using pdflatex, which directly typesets your document in
+%% pdf (use jpg or pdf figures), or
+%% the 2nd when producing a ps file (use eps figures, don't use ps figures!).
+\documentclass[english,12pt,a4paper,pdftex,sci,utf8]{aaltothesis}
+%\documentclass[english,12pt,a4paper,dvips]{aaltothesis}
+%% To the \documentclass above
+%% specify your school: arts, biz, chem, elec, eng, sci
+%% specify the character encoding scheme used by your editor: utf8, latin1
+
+\input{config/imports}
+\input{config/glossary}
+
+%% All that is printed on paper starts here
+\begin{document}
+
+\input{config/headers}
+
+\section{Introduction} \label{introduction}
+\input{chapters/introduction}
+\clearpage
+
+\section{Literature study} \label{literature}
+\input{chapters/literature}
+\clearpage
+
+\section{Research setting} \label{research setting}
+\input{chapters/research}
+\clearpage
+
+\section{Case study findings} \label{case study}
+\input{chapters/findings}
+\clearpage
+
+\section{Discussions} \label{discussions}
+\input{chapters/discussions}
+\clearpage
+
+\section{Conclusions} \label{conclusions}
+\input{chapters/conclusions}
+\clearpage
+
+\section{Temporary references}
+\begin{itemize}
+\item Arcoverde, Roberta, Alessandro Garcia, and Eduardo Figueiredo. "Understanding the longevity of code smells: preliminary results of an explanatory survey." Proceedings of the 4th Workshop on Refactoring Tools. ACM, 2011.
+
+\item Cusumano, Michael A., and Richard W. Selby. "Microsoft secrets." (1997).
+
+\item Cusumano, Michael, and David Yoffie. "Competing on Internet time." (1998).
+
+\item Fowler, Martin. "Refactoring: Improving the Design of Existing Code. 2000."
+
+\item Khomh, Foutse, Massimiliano Di Penta, and Y. Gueheneuc. "An exploratory study of the impact of code smells on software change-proneness." Reverse Engineering, 2009. WCRE'09. 16th Working Conference on. IEEE, 2009.
+
+\item Lehman, Meir M. "Programs, life cycles, and laws of software evolution." Proceedings of the IEEE 68.9 (1980): 1060-1076.
+
+\item McCormick, Hays W., Thomas J. Mowbray, and Raphael C. Malveau. "AntiPatterns: refactoring software, architectures, and projects in crisis." (1998).
+
+\item Mäntylä, Mika V., Jari Vanhanen, and Casper Lassenius. "A taxonomy and an initial empirical study of bad smells in code." Software Maintenance, 2003. ICSM 2003. Proceedings. International Conference on. IEEE, 2003.
+
+\item Mäntylä, Mika V. "An experiment on subjective evolvability evaluation of object-oriented software: explaining factors and interrater agreement." Empirical Software Engineering, 2005. 2005 International Symposium on. IEEE, 2005.
+
+\item Mäntylä, Mika V., and Casper Lassenius. "Drivers for software refactoring decisions." Proceedings of the 2006 ACM/IEEE international symposium on Empirical software engineering. ACM, 2006.
+
+\item Mäntylä, Mika V., and Casper Lassenius. "Subjective evaluation of software evolvability using code smells: An empirical study." Empirical Software Engineering 11.3 (2006): 395-431.
+
+\item Mäntylä, Mika. "Software evolvability-empirically discovered evolvability issues and human evaluations." (2009).
+
+\item Yamashita, Aiko, and Leon Moonen. "Do developers care about code smells? An exploratory survey." Reverse Engineering (WCRE), 2013 20th Working Conference on. IEEE, 2013.
+
+\item Yamashita, Aiko, and Leon Moonen. "Do code smells reflect important maintainability aspects?." Software Maintenance (ICSM), 2012 28th IEEE International Conference on. IEEE, 2012.
+
+\item Yamashita, Aiko, and Leon Moonen. "Exploring the impact of inter-smell relations on software maintainability: an empirical study." Proceedings of the 2013 International Conference on Software Engineering. IEEE Press, 2013.
+
+\item Yin, Robert K. "Applications of case study research (applied social research methods)." Series, 4th. Thousand Oaks: Sage Publications (2003).
+\end{itemize}
+
+\clearpage
+
+\printbibliography[heading=bibintoc, title={References}]
+\end{document}

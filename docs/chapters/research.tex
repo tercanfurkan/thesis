@@ -1,0 +1,119 @@
+The main objective of this study is to gain an understanding on refactoring rationale, in particular how it is described in the relevant literature versus how it is perceived by agile software developers. Thus, identify neglected threats to software evolution. 
+
+The objective is targeted in terms of a) studying relevant literature to form a basis on refactoring, particularly on refactoring rationale, b) finding empirical evidence on how refactoring rationale is percieved by developers, and c) discussing the inclusionary nature of the relevant literature study and our empirical findings. The relation of these studies to the research questions is presented in Table \ref{table:researchQuestions}.
+
+\begin{table}[ht!]
+\centering
+\caption{Relation between studies and research questions}
+\label{table:researchQuestions}
+    \begin{tabular}{ p{10cm} m{2cm} m{2cm}  }
+     \hline
+     \textbf{Research question}  &\textbf{Literature}  &\textbf{Empirical}  \\
+     \hline
+     RQ1: What does literature say about refactoring and when it is needed?                         &X      &-  \\
+     \hline
+     RQ2: How does developers perceive refactoring rationale?                                       &-      &X  \\
+     \hline
+     RQ3: What does the correlation of the two reveal in terms of threats to software evolution?    &x      &x  \\
+     \hline
+    \end{tabular}
+\centering
+\caption*{  \textbf{Legend}: "X" indicates higher emphasis then "x", while "-" indicates no emphasis}
+\end{table}
+
+Finding an answer to RQ1 requires a literature study. This research question aims to present a software refactoring rationale taxonomy, which will act as the first building block when answering RQ3.
+
+Finding an answer to RQ2 through a real world investigation overlaps with Yin's (2003) definition of a case study --- an empirical method aimed at investigating contemporary phenomena in their context. Similarly, the findings will act as the second building block when answering RQ3.
+
+RQ3 aims to study the correlation between RQ1 and RQ2. In addition, it conducts a minor literature study on software evolution, to reveal neglected threats by taking the studied correlation into account.
+
+\subsection{Case company} \label{caseCompany}
+The case study was conducted in a lean start-up ICT company based in Helsinki, Finland. The company is producing  telecommunication application services enabling video calling from multiple endpoints, including web browsers, smart TV's and mobile devices. 
+\subsubsection*{Software under study} \label{software}
+The service platform consists of a server backend and multiple client endpoints. However, the scope of this study includes the server backend and two of the clients, since only these three components were actively developed within the data collection period. 
+
+\begin{enumerate}[label=\textbf{C\arabic*}]
+\item The server component presented in Table \ref{table:serverLoc}, was implemented using javascript, having nodejs as the runtime environment.
+
+\item An android client component presented in Table \ref{table:androidLoc}, was implemented using java.
+    
+\item A web client component presented in Table \ref{table:webLoc}, was implemented using javascript, having angularjs as the web application framework.
+\end{enumerate}
+
+\begin{table}[ht!]
+\centering
+\caption{Server component; number of files and \gls{LOC}}
+\label{table:serverLoc}
+    \begin{tabular}{ |p{3cm} p{2cm} p{2cm} p{2cm} p{2cm}|  }
+     \hline
+     Language       &Files  &Blank  &Comment    &Code\\
+     \hline
+     \hline
+     Javascript     &36     &582    &131        &4059\\
+     Json           &4      &1      &0          &251\\
+     Python         &5      &72     &46         &213\\
+     Html           &1      &0      &1          &43\\
+     Shell          &2      &21     &5          &39\\
+     \hline\hline
+     Sum            &48     &676    &183        &4605\\
+     \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[ht!]
+\centering
+\caption{Android client component; number of files and \gls{LOC}}
+\label{table:androidLoc}
+    \begin{tabular}{ |p{3cm} p{2cm} p{2cm} p{2cm} p{2cm}|  }
+     \hline
+     Language       &Files  &Blank  &Comment    &Code\\
+     \hline\hline
+     Xml            &707    &2687   &4921       &25950\\
+     Java           &143    &2699   &5873       &15078\\
+     Shell          &2      &50     &21         &237\\
+     \hline\hline
+     Sum            &852    &5436   &10815      &41265\\
+     \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[ht!]
+\centering
+\caption{Web client component; number of files and \gls{LOC}}
+\label{table:webLoc}
+    \begin{tabular}{ |p{3cm} p{2cm} p{2cm} p{2cm} p{2cm}|  }
+     \hline
+     Language&Files&Blank&Comment&Code\\
+     \hline\hline
+     Javascript   & 37    &542&   161&3631\\
+     Less&   15  & 275   &10 & 1359\\
+     Html &24 & 58&  17&540\\
+     Json    &2 & 0&  0 & 0\\
+     \hline\hline
+     Sum&78&875&188&5606\\
+     \hline
+    \end{tabular}
+\end{table}
+\subsubsection*{Development process} \label{process}
+The organization is a lean startup, following lean development flow principles and employing most of the agile development practices. Practices worth mentioning includes; continuous integration and deployment, continuous improvement (process and software quality), efficient and face-to-face communication, peer reviews, one peace flow, pair programming, testing as an integral part of development, and collective code ownership.
+
+As it is a key principle of lean development, in ensuring continuous integration and deployment, continuous software quality improvement takes place routinely but critically within the organization. In particular, software refactoring serves as the main approach in this context.  
+
+The empirical study was introduced to the developers during continuous process improvement meetings, named as retrospectives. As part of the study, developers were requested to put addition attention in reporting their refactoring related tasks. Collective code ownership and peer reviews were routine practices at present. Therefore, developers were already used to report their daily tasks using the source-code revision control system \gls{RCS}. 
+
+\subsubsection*{Developers} \label{developers}
+All developers of the organization participated in the empirical study. During this period, 6 developers reported their refactoring tasks in the source-code \gls{RCS}.
+
+<<A figure presenting developers and their work experience levels>>
+
+\subsection{Data collection} \label{data collection}
+Data was gathered from a single source. The single source of information was stored in the source-code \gls{RCS}. Developers reported their refactoring related tasks to the source-code \gls{RCS}. Since collective code ownership and peer reviews where routine practices at present, this extra duty required almost no extra effort from developers. 
+
+Prior to the empirical data collection kick-off, several group discussions were conducted to motivate developers to highlight their refactoring tasks in their notes and to place useful conventions for data collection and analysis. In order to ease the data collection and analysis process, a convention of labeling their reports was introduced to developers.
+
+Developers were using git as the source-code \gls{RCS}. Therefore, developers highlighted their refactoring tasks using git commit messages and git code line comments. Subsequently, a public API offered by the cloud-based git repository service was used to retrieve the commit messages, commit changes, and code line comments. The API offered json as a response format. Therefore, this made it trivial to collect, filter, further analyze and categorize refactoring tasks based on developer notes.  
+
+In the cases were developer notes lacked sufficient amount of detail on the rational behind a refactoring decision, informal communication was used to resolve the ambiguity. Thanks to a) peer reviews with having short feedback cycles, b) efficient and face-to-face communication possibility, and c) technical reviews following short iterations, ambiguous developer notes were minimized. 
+
+\subsection{Data analysis} \label{data analysis}
+How was the data filtered, cleaned, and categorized? What tools and analysis methods were used?
