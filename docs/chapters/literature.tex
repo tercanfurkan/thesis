@@ -64,7 +64,7 @@ In order to represent comprehensive data items without introducing code smells s
 \begin{itemize}
 \item Replace data value with object. Turn the data item into an object once it requires additional data or behaviour.
 \item If the data value is a type code and does not affect class behaviour, replace it with class. By wrapping numeric type codes and enumerations into a class and providing static factory methods for handling them, readability of the code can be improved and potential bugs can be prevented.  
-\item If the type codeis affecting class behaviour, replace type code with subclass. Form an inheritance structure having a subclass for each type code. Following this, replace conditionals that depend on the type codes with polymorphism
+\item If the type code is affecting class behaviour, replace type code with subclass. Form an inheritance structure having a subclass for each type code. Following this, replace conditionals that depend on the type codes with polymorphism
 \end{itemize}
 
 \textit{\textbf{Long parameter list -}} having method parameters is an alternative to having global variables. However, this is only true in our early programming days. However in a \gls{OO} context, instead of using a long parameter list or declaring global variables, a method can request data from other objects. Thus, instead of passing everything a method needs, it is enough to pass parameters so that the method can retrieve relevant data. 
@@ -82,16 +82,113 @@ Refactoring solutions are introduced for long parameter lists \cite{fowlerRefact
 This code smell can be resolved by using class extraction to split responsibility, previously explained on \textit{large class} code smell. Data clumps can be further served as parameter objects or, preserved as whole objects. Both refactoring solution was elaborated on \textit{long parameter list} code smell.
 
 \subsubsection*{Object-orientation abusers}
+This category of smells is related to cases where the solution does not fully exploit the possibilities of \gls{OO} design \cite{mantylaTaxonomy}. Switch statements, temporary field, refused bequest, alternative classes with different interfaces, and parallel inheritance hierarchies are considered in the object-orientation abusers category. 
+
+\textit{\textbf{Switch statements -}} result in duplicated code and a significant maintainability issue when code is subject to change. It causes duplication since the same statement typically exists in multiple places. In conjunction with duplication, it significantly prevents change. If a switch statement needs an additional clause, the change needs to be applied in all places where the statement is used.
+
+The proposed refactoring solutions \cite{fowlerRefactor} indicate using the \gls{OO} notion of polymorphism.
+
+\begin{itemize}
+\item If a switch statement occur on a type code, similar to the refactoring solutions proposed on the \textit{primitive obsession} code smell, an inheritance structure can be formed having a subclass for each type code. Following this, switch statements can be replaced with polymorphism.
+\item If there are only few cases which makes using polymorphism an overkill, add an explicit method for each conditional case in the switch statement.
+\end{itemize}
+
+\textit{\textbf{Temporary field -}} smell occurs in the case where a class variable is only set and used in certain cases. For instance, a temporary variable could be defined in the class scope, whereas it should only be defined a method scope. This type of smell make it difficult to understand the duty of the temporary variable. 
+
+In order to resolve this type of code smell, temporary fields and the methods that require them can be extracted into a new class \cite{fowlerRefactor}. The new method object can then be used by the original class. 
+
+\textit{\textbf{Refused bequest -}} smell is a sign of an inappropriate inheritance hierarchy. Subclasses get to inherit the methods and data of their parents \cite{fowlerRefactor}. This smell occurs when there is clash between what subclass expects to reuse and what it inherits from the parent class.
+
+There are two refactoring solutions proposed to resolve the conflict on the inheritance hierarchy:
+
+\begin{itemize}
+\item Heading towards having an abstract superclass by pushing down fields and methods to subclasses.
+\item Removing the inheritance hierarchy and replacing inheritance with delegation. This solution can be used in the case where the subclass is refusing the superclass interface and causing the inheritance hierarchy to be useless. Instead, the superclass can be declared as a class variable and used appropriately. 
+\end{itemize}
+
+\textit{\textbf{Alternative classes with different interfaces -}} smell is a sign of not using inheritance properly on closely related classes. These classes contain similar features which can be considered as duplicate code and a preventer for change.
+
+As a refactoring solution the commonalities can be extracted into a superclass. Consequently, the alternative classes can be incorporated in a inheritance hierarchy.
+
+\textit{\textbf{Parallel inheritance hierarchies -}} smell needs to be fixed by using a proper inheritance hierarchy. Tightly coupled classes result in tightly coupled inheritance hierarchies. This results as a special case of the \textit{shotgun surgery} code smell having duplicated code\cite{fowlerRefactor}. 
+
+The proposed refactoring solution to eliminate duplication is to make sure that instances of one hierarchy refer to instances of the other. This means decoupling classes that have a parallel inheritance hierarchy. Achieving this requires moving methods and fields from one class to the other and using only references. As a result the inheritance hierarchy on the referring class will disappear \cite{fowlerRefactor}.  
 
 \subsubsection*{Change preventers}
+Change preventer code smells imply code structures that considerably hinder the modification if the software.  \cite{mantylaTaxonomy}. Ideally according to \cite{fowlerRefactor}, there is a one-to-one link between common changes and classes. This category contains divergent change and shotgun surgery code smells:
+
+\textit{\textbf{Divergent change -}} is one type of smell that causes difficult to modify code. It occurs when a class acts feature envy containing various responsibility, as a result being exposed to change in different ways for different reasons. Any change to handle a variation should change a single class, and all the typing in the new class should express the variation \cite{fowlerRefactor}.
+
+As a refactoring solution, one must identify all changing blocks for a particular cause and extract them into a new class. 
+ 
+\textit{\textbf{Shotgun surgery -}} in the other code smell type that causes difficult to modify code. It occurs when a change has an effect on multiple locations. It is considerably difficult to modify certain part of a software, if it requires multiple changes in multiple classes.
+
+Proposed refactoring solution suggests moving methods/fields to another class and access them via reference. Thus, code blocks affected by a particular change is put into a single class. 
 
 \subsubsection*{Dispensables}
+This type of code smells indicate existing unnecessary peaces in the code. This could be related to having lazy, redundant, or dead peaces in the code. Interestingly, Fowler \cite{fowlerRefactor} do not present a smell for dead code. Dead code is code that is left behind due to legacy reasons, evolved software, changed requirements, or refactoring. Dead code hinders code comprehension and makes current code structure less obvious \cite{mantylaTaxonomy}.
+
+Dispensable code smells include, lazy class, data class, duplicated code, and speculative generality.
+
+\textit{\textbf{Lazy class -}} is a class that is not doing enough work and suitable to be eliminated with a short effort. 
+
+There are two refactoring solutions proposed to eliminate a lazy class:
+
+\begin{itemize}
+\item Code in a nearly useless class can be moved to another class. 
+\item In a inheritance hierarchy, if a subclass is not adding any value, the hierarchy can be collapsed. The methods and fields in the subclass can be pulled up to the parent class.
+\end{itemize}
+ 
+\textit{\textbf{Data class -}} is a simple class that only have data fields and getter/setter methods for the fields. Similar to a lazy class, it does not have enough responsibility. Yet in this case, it is more suitable to embrace extended functionality. 
+
+There are several building blocks to extend the responsibility of a data class:
+
+\begin{itemize}
+\item First of all, encapsulation should be applied to its publicly available variables.
+\item Setter methods should be removed for variables that should not be modified.
+\item The behaviour of the outsider methods that invoke the getters/setters of the data class can be moved indoors.
+\item Finally, encapsulation can be applied to its methods that are not used by other classes.
+\end{itemize}
+
+\textit{\textbf{Duplicated code -}} smell indicates having the same code structure in multiple places. When a modification is required in such a code structure, the same change need to be applied in multiple locations.
+
+The proposed refactoring solution recommends unifying recurring code in a method. This can be achieved in steps; 
+\begin{enumerate}
+\item Extract duplicated code as a seperate method.
+\item Decide where the new method should belong.
+\item Ensure that only this methods is called from all locations that seek the functionality.
+\item Remove its duplicates.
+\end{enumerate}
+
+\textit{\textbf{Speculative generality -}} smell occurs when unnecessary ability is introduced to the code for the sake of speculative reasoning. This often results in a code with unused parts that is difficult to understand and maintain. 
+
+The refactoring solutions used to eliminate speculative generality include:
+
+\begin{itemize}
+\item If abstract classes are used that does not add any value, inheritance hierarchy can be collapsed.
+\item Unnecessary delegation can be resolved by moving the functionality indoors.
+\item Unused method parameters should be removed.
+\item Methods having difficult to understand abstract names should be renamed.
+\item Identify methods/classes that are only used in test cases. Remove them in case they are not supportive for test cases that exercise legitimate functionality. 
+\end{itemize}
 
 \subsubsection*{Encapsulators}
 
+\textit{\textbf{Message chain -}} 
+ 
+\textit{\textbf{Middle man -}} 
+
 \subsubsection*{Couplers}
 
+\textit{\textbf{Feature envy -}} 
+ 
+\textit{\textbf{Inappropriate intimacy -}} 
+
 \subsubsection*{Others}
+
+\textit{\textbf{Incomplete library class -}} 
+ 
+\textit{\textbf{Comments -}} 
 
 \subsubsection{Other structural drivers}
 
