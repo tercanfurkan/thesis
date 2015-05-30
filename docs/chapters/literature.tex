@@ -1,19 +1,101 @@
-In addition to the references mentioned in the sub-sections, take a look at the following papers:
+\subsection{Overview}
+
+%Define refactoring referring mainly to Brown et al. (1998) and Fowler (2000). 
+%Explain the importance and benefits of refactoring referring to at least Khomh et al. (2009), Cusumano et al. (1997), Cusumano et al. (1997)
+
+%In addition to the references mentioned in the sub-sections, take a look at the following papers:
+%\begin{itemize}
+%\item Yamashita and Leon (2012)
+%\item Yamashita and Leon (2013)
+%\item Mäntylä (2009)
+%\item Arcoverde et al. (2011)
+%\item Mäntylä (2005)
+%\item Mäntylä and Lassenius (2006)
+%\end{itemize}
+
+Refactoring is the process of making small code level changes to improve its internal structure. The cumulative effect of these small changes can radically improve software design \cite{fowlerRefactor}. With refactoring the software design is formed continuously during development rather then up front. 
+
+Refactoring is performed to make the software more readable. Also it can be applied as performance optimizations. Refactoring does not change the observable behavior of the software. Software still carries out the same function that it did before. Any user, whether an end user or another programmer, can not tell that things have changed \cite{fowlerRefactor}.  
+
+Then why refactor? Refactoring improves the design of the software, makes software easier to understand, helps to find bugs and to program faster.
+
+\subsection{Refactoring drivers}  
+%Admit the basis of the presented taxonomy comes from Fowler (2000) but it is inspired (or taken from) Mäntylä et al. (2003). 
+%Attempt to discuss and improve the taxonomy with at least Brown et al. (1998), Mäntylä and Lassenius (2006), Yamashita et al. (2013)
+Refactoring drivers can be described as the motivations behind the attempts to resolve bad smells and applied anti-patterns in code. The fundemental intention of these drivers is to improve code quality. 
+
+The objective of this literature study is to identify refactoring drivers found in scientific knowledge and grasp an understanding on how they relate to empirical findings.The drivers are presented in three categories; object-orientation drivers, other structural drivers and visual representation drivers. 
+
+\subsubsection{Object-orientation drivers}
+Object-orientation is one approach to software design. It applies object-oriented design \gls{OOD} patterns to satisfy concepts such as; interacting objects, information hiding, inheritance, interfaces, and polymorphism. Drivers in this context can be derived based on poorly used, over-used, or misused \gls{OOD}. 
+
+Fowler and Beck introduced 22 code smells which should be subject to refactoring in the object-oriented (\gls{OO}) context \cite{fowlerRefactor}. A later study, proposes a classification for the 22 code smells \cite{mantylaTaxonomy}. This section specifies the proposed categories including, bloaters, \gls{OO} abusers, change preventers, dispensables, encapsulators, couplers, and others. 
+
+\subsubsection*{Bloaters}
+Bloaters represent something in the code that has grown so large that it cannot be effectively handled \cite{mantylaTaxonomy}. This category include code smells including, long method, large class, primitive obsession, long parameter list, and data clumps.
+
+\textit{\textbf{Long method -}} the software that lives best and longest are those with short methods \cite{fowlerRefactor}. The longer a method body is, the more difficult it is to understand. It is usually more vulnerable to possible bugs due to having more corner cases to cover.
+
+Earlier programming languages and development environments have deterred people from small methods. These Languages introduced overhead in subroutine calls and available tools made it difficult to switch context between routines and subroutines. However, modern languages and integrated development environments (\gls{IDE}), have overcome these shortages. The net effect is that developers can be more aggressive when decomposing methods to improve understandability, robustness and modularity.  
+
+The propesed refactored solutions \cite{fowlerRefactor} on long methods include:
+
 \begin{itemize}
-\item Yamashita and Leon (2012)
-\item Yamashita and Leon (2013)
-\item Mäntylä (2009)
-\item Arcoverde et al. (2011)
-\item Mäntylä (2005)
-\item Mäntylä and Lassenius (2006)
+\item Replace comments with methods to reduce the semantic distance between what methods does and how it does it.
+\item Shorten methods by extracting code parts that seems to go nicely together into their own subroutines.
+\item To overcome method extraction issues when when there are lots of temp variables, conditionals and loops, decompose them into utility methods 
+\item To overcome method extraction issues when a method has a long parameter list, introduce parameter objects.  
+\item If a method still can not be decomposed easily, turn the method into its own object so that all the local variables become fields of it's own and then decompose the method into other methods on the same object. 
 \end{itemize}
 
-\subsection{Software refactoring}
-Define refactoring referring mainly to Brown et al. (1998) and Fowler (2000). 
+\textit{\textbf{Large class -}} reveals to much responsibility. When a class is trying to do too much, it often shows up too many instance variables. This brings a lot of duplicated code into existence. A large class is also commonly exposed to changes for different reasons. This introduces extra complexity when software changes are required.
 
-Explain the importance and benefits of refactoring referring to at least Khomh et al. (2009), Cusumano et al. (1997), Cusumano et al. (1997),  
+Two refactoring solutions are suggested for a class with too much code -- a prime breeding ground for duplicated code, chaos, and death \cite{fowlerRefactor}. 
 
-\subsection{Refactoring drivers}
-Admit the basis of the presented taxonomy comes from Fowler (2000) but it is inspired (or taken from) Mäntylä et al. (2003). 
+\begin{itemize}
+\item Extract class and split the responsibility. 
+\item Extract subclass for a subset of features. If a class has features that are used only in some instances, extract that subset into a subclass.
+\end{itemize}
 
-Attempt to discuss and improve the taxonomy with at least Brown et al. (1998), Mäntylä and Lassenius (2006), Yamashita et al. (2013)
+\textit{\textbf{Primitive obsession -}} most programming languages have two data types -- primitives and objects. Primitive type is a simple type holding a single value to represent a single data item. Objects on the other hand, allows to structure data items into meaningful groups. If a data item needs to be represented rather comprehensively, by using primitives one needs to extend the owning class with methods to satisfy the requirements. This can quickly result in code smells of duplication and feature envy.
+
+In order to represent comprehensive data items without introducing code smells several refactoring solutions have introduced \cite{fowlerRefactor}:
+
+\begin{itemize}
+\item Replace data value with object. Turn the data item into an object once it requires additional data or behaviour.
+\item If the data value is a type code and does not affect class behaviour, replace it with class. By wrapping numeric type codes and enumerations into a class and providing static factory methods for handling them, readability of the code can be improved and potential bugs can be prevented.  
+\item If the type codeis affecting class behaviour, replace type code with subclass. Form an inheritance structure having a subclass for each type code. Following this, replace conditionals that depend on the type codes with polymorphism
+\end{itemize}
+
+\textit{\textbf{Long parameter list -}} having method parameters is an alternative to having global variables. However, this is only true in our early programming days. However in a \gls{OO} context, instead of using a long parameter list or declaring global variables, a method can request data from other objects. Thus, instead of passing everything a method needs, it is enough to pass parameters so that the method can retrieve relevant data. 
+
+Refactoring solutions are introduced for long parameter lists \cite{fowlerRefactor} that reduces the likelihood of having methods that are inconsistent, difficult to use, understand, maintain and change:
+
+\begin{itemize}
+\item Replace parameter with method. If a method can get a value that is passed in as parameter by another means, it should \cite{fowlerRefactor}. If a method parameter is formed of an expression, the parameter can be removed by extracting the expression intro a subroutine and calling it directly from the method. 
+\item Use preserve whole object. If several values of an object is passed as parameters into a method, instead, the whole object can be passed as a parameter or an appropriate method of the whole object can be invoked that returns required values.
+\item Introduce parameter objects based on group of data that naturally go together.Data clumps which are typically passed together as parameters, can be replaced with objects that wraps them. 
+\end{itemize}
+
+\textit{\textbf{Data clumps -}} are one of the causes of long parameter lists, long methods, and large classes. Until they are extracted into a class, data items that naturally go together float within code and cause duplication, inconsistency, maintainability and readability issues.
+
+This code smell can be resolved by using class extraction to split responsibility, previously explained on \textit{large class} code smell. Data clumps can be further served as parameter objects or, preserved as whole objects. Both refactoring solution was elaborated on \textit{long parameter list} code smell.
+
+\subsubsection*{Object-orientation abusers}
+
+\subsubsection*{Change preventers}
+
+\subsubsection*{Dispensables}
+
+\subsubsection*{Encapsulators}
+
+\subsubsection*{Couplers}
+
+\subsubsection*{Others}
+
+\subsubsection{Other structural drivers}
+
+\subsubsection{Visual representation drivers}
+ 
+
+\subsection{Refactoring tactics}
