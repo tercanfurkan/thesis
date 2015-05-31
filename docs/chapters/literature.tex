@@ -19,7 +19,7 @@ Refactoring is performed to make the software more readable. Also it can be appl
 
 Then why refactor? Refactoring improves the design of the software, makes software easier to understand, helps to find bugs and to program faster.
 
-\subsection{Refactoring drivers}  
+\subsection{Drivers and solutions}  
 %Admit the basis of the presented taxonomy comes from Fowler (2000) but it is inspired (or taken from) Mäntylä et al. (2003). 
 %Attempt to discuss and improve the taxonomy with at least Brown et al. (1998), Mäntylä and Lassenius (2006), Yamashita et al. (2013)
 Refactoring drivers can be described as the motivations behind the attempts to resolve bad smells and applied anti-patterns in code. The fundemental intention of these drivers is to improve code quality. 
@@ -173,22 +173,65 @@ The refactoring solutions used to eliminate speculative generality include:
 \end{itemize}
 
 \subsubsection*{Encapsulators}
+Encapsulation means hiding internal details from other classes. \cite{fowlerRefactor}. Code smells in this category reveal issues on the way objects, data, or operations are accessed. The smells in this category are message chains and middle man. 
 
-\textit{\textbf{Message chain -}} 
+\textit{\textbf{Message chain -}} smell usually indicates a coupling problem. When there is a chain of tightly coupled classes, modifying one requires changes on others.
+
+Refactoring solution proposes hiding delegates using the following steps:
+
+\begin{itemize}
+\item Add a simple delegate method on the middle man. 
+\item Adjust the caller class to call the delegate method on the middle man.
+\item Remove direct access to the delegate object on the middle man.
+\end{itemize}. 
  
-\textit{\textbf{Middle man -}} 
+\textit{\textbf{Middle man -}} is a result of applying excessive amount of encapsulation and delegation. In this case, a class can become a middle man.
+
+Different refactoring solutions can be applied in this case, depending on the condition of the class:
+
+\begin{itemize}
+\item If the class is nothing but a middle man, it can be removed, and the caller classes may start accessing its delegates directly
+\item If only a few method is used as delegates, move those methods to the caller class.
+\item If you have many simple delegations for the entire interface and if there is additional behaviour that stops your from removing the middle man, replace delegation with inheritance and make the delegating class (middle man) a subclass of the delegate. This will allow to extend delegate behaviour without any chaining.
+\end{itemize} 
 
 \subsubsection*{Couplers}
+High coupling is against \gls{OO} design principles. It dramatically reduces the ability to modify and reuse software components. Code smells in this category are highly related to object-orientation abuser smells. This category includes, feature envy and inappropriate intimacy smells.
 
-\textit{\textbf{Feature envy -}} 
+\textit{\textbf{Feature envy -}} smell means a case where one method have a lot of responsibility and more interested in other classes then the owning class. This smell clearly indicates that such a method belongs elsewhere. 
+
+Depending on the method condition, several refactoring solutions can be applied:
+
+\begin{itemize}
+\item If it is obvious that the method belongs to a particular class, it can be moved. The method should go together with the data that it uses and the idea is to put things together that change together. This rule of thumb can be used in deciding a correct location for such a method.
+\item In case only one part of the method suffers from envy, that part can be extracted and moved as a new method to the relevant class.
+\end{itemize}
  
-\textit{\textbf{Inappropriate intimacy -}} 
+\textit{\textbf{Inappropriate intimacy -}} means that two classes are tightly coupled with each other \cite{mantylaTaxonomy}. In such a case, following refactoring solutions can serve several approaches:
+
+\begin{itemize}
+\item Moving over-intimately used methods or fields to the correct class and improve decoupling.
+\item Change bidirectional associations to unidirectional. Bidirectional associations introduce added omplexity of maintaining the two-way links and ensuring that objects are properly created and removed \cite{fowlerRefactor}. Additionally, they are usually not perceived as natural by developers, so they often are a source of errors \cite{fowlerRefactor}.
+\item Hide delegate to reduce intimacy and introduce a middle man class for accessing delegates.
+\item If inheritance is causing inappropriate intimacy, replace it with delegation. At the subclass, create a field for the parent class, adjust methods to delegate to the parent class, and remove the inheritance hierarchy.
+\end{itemize}
 
 \subsubsection*{Others}
+This category contains code smells that do not fit into any of the above categories. It covers incomplete library class and comments.
 
-\textit{\textbf{Incomplete library class -}} 
+\textit{\textbf{Incomplete library class -}} code smell occurs in case a library is in a bad form and impossible to modify. Under this circumstances, as a refactoring solution, one can introduce foreign methods or classes as a local extension. This way, they could be further refactored and modified according to needs. 
  
-\textit{\textbf{Comments -}} 
+\textit{\textbf{Comments -}} in code can be an indication of a bad smell nearby. The best practice is to go through code comments, identify the bad smells nearby and refactor. Refactoring nearby code smell can transform code comments to be unnecessary.
+
+Possible refactoring solutions include:
+
+\begin{itemize}
+\item If a block of code requires comment, extract that block into a new method and assign a descriptive name.
+\item If a method body is hard to understand and requires comment, rename the method to be more explanatory.
+\item if a block of code relies on an assumption, make that assumption explicit by introducing an assertion.
+\end{itemize}
+
+On the other hand, comments can be used as a refactoring solution themselves. It can be useful to add comments to describe why something was implemented in such a way, or how it can be improved. 
 
 \subsubsection{Other structural drivers}
 
