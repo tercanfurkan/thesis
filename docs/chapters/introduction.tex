@@ -1,22 +1,38 @@
-In this chapter section \ref{background} presents the background and motivation of this study. Following section \ref{scope} presents the scope of the thesis. Section \ref{questions} introduces the objective and research questions. Finally, section \ref{structure} summarizes the structure of this document. 
+In this chapter section \ref{background} presents the background and motivation of this study. Following section \ref{questions} introduces the objective and research questions. Finally, section \ref{structure} summarizes the structure and scope of this document. 
 \subsection{Background and motivation} \label{background}
-What is refactoring \cite{fowlerRefactor}? Why and how critical is it for software development. What does the literature say about it's importance. If we scope it a bit down, what is the view of agile development to these questions?
+%What is refactoring \cite{fowlerRefactor}? Why and how critical is it for software development. What does the literature say about it's importance. If we scope it a bit down, what is the view of agile development to these questions?
 
-When should you refactor? When to add a new function, when to fix a bug, as you do a code review, 
+%When should you refactor? When to add a new function, when to fix a bug, as you do a code review, 
 
-What is the tricky part when deciding on what and how much to refactor? Is this hard to define. Does it highly depend on the context? How credible is what the literature say about drivers on refactoring decisions. Is there a research gap to reveal empirical findings in order to contribute to the scientific knowledge regarding refactoring rationale?
+%What is the tricky part when deciding on what and how much to refactor? Is this hard to define. Does it highly depend on the context? How credible is what the literature say about drivers on refactoring decisions. Is there a research gap to reveal empirical findings in order to contribute to the scientific knowledge regarding refactoring rationale?
 
-What would be the benefits, once we know more about refactoring rationale? What does the literature say about it's possible benefits? Take into account different viewpoints (customers, developers, etc.).
+%What would be the benefits, once we know more about refactoring rationale? What does the literature say about it's possible benefits? Take into account different viewpoints (customers, developers, etc.).
 
-Discuss the relevant literature. Have this specific topic been investigated? What are the touching points? Which areas of the topic will be overlapped (and why) in this study? What would be the additional contribution? Why does this contribution make sense?
+%Discuss the relevant literature. Have this specific topic been investigated? What are the touching points? Which areas of the topic will be overlapped (and why) in this study? What would be the additional contribution? Why does this contribution make sense?
 
-How do you claim to achieve this contribution? Summarize the research process. Why does it make sense to conduct the study in such a research context? 
+%How do you claim to achieve this contribution? Summarize the research process. Why does it make sense to conduct the study in such a research context? 
 
-Motivated by the findings in earlier studies, this thesis investigates the refactoring rationale in a lean startup ICT company. Attention has been paid to understand the drivers behind refactoring decisions in the company's agile development process. The results of the case study is analyzed, discussed and the most significant findings are compared with the scientific knowledge regarding software refactoring rationale. We will also discuss the issues which needs more thorough investigation and research in the future.
+Software systems are continuously forced to evolve as they can not resist change. During this process, software quality must be audited, secured, and maintained. Quality typically degenerates as a software is subjected to change during the course of its lifetime. Similarly, Lehman’s laws of software evolution state \cite{lehmanLaws}, a functionality increment of a system always brings a corresponding decrease in the quality and an increase in the internal complexity. Thus, maintaining such a system demands that in addition to adding new functionality, existing code must be continuously refactored, i.e., improved without adding functionality \cite{mantylaTaxonomy}. For instance, Microsoft reserves 20\% of its development effort to maintain and re-develop the code base of its products \cite{selbyMicrosoft}. 
 
-This study also contains a literature review chapter. In chapter \ref{literature}, we will discuss software refactoring and refactoring rationale as it is described in the literature. Then, we will explore refactoring drivers defined by the scientific knowledge, including anti-patterns and code smells.
+Refactoring is the process of changing the internal structure of a software system without altering its external behavior \cite{fowlerRefactor}. Doing this will increase the understandability of code, make it easier to implement new features and debug the code. In most cases, refactoring can be achieved in terms of transforming the program into a better quality by fixing the quality defects like code smells, anti-patterns and other anomalies \cite{shatnawiEmpirical}.
 
-\subsection{Scope of the thesis} \label{scope}
+Refactoring naturally fits in the process of software reengineering \cite{demeyerReengineering}, which aims to restructure legacy software. Therefore, refactoring as a concept was previously practiced within software restructuring. As object-orented design emerged as a contemporary concept, the term refactoring surfaced in the early nineties \cite{fowlerRefactor}. 
+
+Researchers contributed large size of knowledge and concepts in the area of software refactoring. Fowler and Beck introduced 22 problematic code structures that requires refactoring \cite{fowlerRefactor}. Mäntylä et al. proposed a classification \cite{mantylaTaxonomy} for the 22 code smells introduced by Fowler and Beck and further investigates the correlation between the smells through an initial empirical study to help understand how different smells are connected to each other. Brown et al. explains development anti-patterns \cite{brownAntiPatterns}, which have similarities with code smells.
+
+Researchers have also contributed with surveys and empirical studies. Siy and Votta \cite{siyInspection} studied data of 130 code inspection sessions and came up with four groups of code maintenance drivers, namely documentation, style, portability, and safety. Further, they present empirical evidence on how developers perceive the discovered drivers. In their survey \cite{yamashitaDevelopers}, Yamashita and Moonen inspects code smells from the developers perspective and presents a prioritized list of smells. While also having empirical parts, there are also studies introducing automated tool support for detecting specific refactoring candidates \cite{simonMetrics,kataokaAutomated,tourweRefactoring}. 
+
+However, there is little evidence to justify the use of code smell in refactoring. In particular, the study of the human perception of what is a code smell and how to deal with it has been mostly neglected in the past. Therefore, further research on refactoring can bring a significant contribution if this research gap is considered. In particular a research, which 1) considers the human factorwhen determining the drivers behind refactoring decisions, and 2) identifies the refactoring solutions practices by developers in addressing different refactoring drivers. 
+
+Motivated by the findings in earlier studies, this thesis investigates the refactoring rationale in a lean startup ICT company. Attention has been paid to understand the drivers behind refactoring decisions in the company's development process. The results of the case study is analyzed, discussed and the most significant findings are compared with the scientific knowledge regarding software refactoring. We will also discuss the issues which needs more thorough investigation and research in the future.
+
+In addition, Chapter \ref{literature}, presents an overview of software refactoring. It descibes refactoring reasons found in literature, in terms of code smells and anti-patterns. Finally, it introduces survey and empirical studies on the relation between refactoring reasons and how they are perceived by software professionals.
+
+%\subsection{Scope of the thesis} \label{scope}
+
+%This study presents empirical findings on refactoring decisions for a two months period in a lean startup ICT company. Therefore, the findings are limited to the case company's agile development processes.
+
+%Data was collected from the company's version control system during the study period. Historical data was scoped out due to the time limitations of this study. 
 
 \subsection{Objective and research questions} \label{questions}
 According to the motivation stated in section \ref{background}, there is a need to investigate and reveal the correlation between how literature have conceptualized software refactoring rationale and how it is actually percieved by developers. Accordingly, an empirical study can be conducted investigating refactoring decisions in a case company. The empirical findings can then be further analyzed and compared with the scientific knowledge regarding software refactoring rationale. 
@@ -39,5 +55,24 @@ This research question is of explorative nature and it tries to find empirical e
 This research question aims to discuss how well the developer's perception fits to the presented taxonomy. Based on this discussion, it aims to identify neglected threats to software evolution.
 \end{enumerate}
 
-\subsection{Structure of the thesis} \label{structure}
-%% In a thesis, every section starts a new page, hence \clearpage
+\subsection{Structure and scope of the thesis} \label{structure}
+The summary of the scope and structure of the thesis is presented out in the folowing.
+
+\subsubsection*{Introduction}
+The background and motivation of the thesis is presented, accompanied by the main objection and research questions. 
+
+\subsubsection*{Software refactoring}
+Overview of the literature on software refactoring is presented. Refactoring reasons found in literature, in terms of code smells and anti-patterns is described, accompanied by survey and empirical studies on the relation between refactoring reasons and how they are perceived by software professionals.
+
+
+\subsubsection*{Research methodology}
+The main objective and research questions are elaborated. Relation between research questions and conducted studies are presented. In order to explain the case study environment, case company and their processes are intoduced. Finally, data collection and analysis methods are explained.
+
+\subsubsection*{Case study findings and discussion}
+Case study findings are tightly coupled with the the literature findings. First, as a result of the conducted case study, collected and analysed empirical data on refactoring decisions are presented. Secondly, the findings are compared and discussed together with the literature findings in tho parts. 1) The correlation between findings and refactoring reasons found in literature is identified. 2) The relation between our empirical findings and empirical results in the literature is discussed. 
+
+
+\subsubsection*{Conclusions}
+This chapter concludes the outcome of the thesis and also presents potential threats to validity and future research areas. 
+
+\clearpage
